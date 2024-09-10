@@ -1,0 +1,12 @@
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\bin\Debug\MunicipalServicesApp.exe.config
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\bin\Debug\MunicipalServicesApp.exe
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\bin\Debug\MunicipalServicesApp.pdb
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.csproj.AssemblyReference.cache
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.Properties.Resources.resources
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.ReportIssuesForm.resources
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.csproj.GenerateResource.cache
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.csproj.CoreCompileInputs.cache
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.exe
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.pdb
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.MainForm.resources
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.ViewIssuesForm.resources
