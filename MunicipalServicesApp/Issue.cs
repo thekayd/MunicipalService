@@ -1,5 +1,6 @@
 ﻿namespace MunicipalServicesApp
 {
+    //constructor for location, category, description and attachment
     public class Issue
     {
         public string Location { get; set; }
@@ -10,7 +11,7 @@
         // Parameterless constructor
         public Issue() { }
 
-        // Optional: You can still keep the constructor with parameters if needed
+         // the constructor with parameters 
         public Issue(string location, string category, string description, string attachment)
         {
             Location = location;
@@ -19,6 +20,7 @@
             Attachment = attachment;
         }
 
+        //string override for the detailing of string in list box
         public override string ToString()
         {
             return $"Location: {Location}, Category: {Category}, Description: {Description}\nAttachment: {Attachment}";
