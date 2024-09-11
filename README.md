@@ -62,23 +62,26 @@ Viewing Reported Issues
 •	View Issues Button: Click the View Reported Issues button to open the form that displays a list of previously reported issues.
 •	The issues are presented in a list format, showing their location, category, description, and any attached media.
 •	You can use this form to view all issues that have been submitted.
-Returning to the Main Menu
+
+**Returning to the Main Menu**
+
 •	Back to Menu Button: After submitting an issue or viewing reported issues, you can return to the main menu by clicking the Back to Menu button.
 ________________________________________
 **How to Compile the Application**
 1.	Open the project in Visual Studio.
 2.	Select Build > Build Solution from the toolbar.
 3.	If there are no errors, Visual Studio will compile the application, creating the necessary executable files in the bin folder.
+   
 **Running the Compiled Application**
 1.	Navigate to the bin folder inside your project directory.
 2.	Locate the executable file (e.g., MunicipalServicesApp.exe).
 3.	Double-click the executable to run the application.
 ________________________________________
 **Contributing**
-If you would like to contribute to this project, feel free to fork the repository and submit a pull request. Contributions are welcome, including bug fixes, feature additions, and documentation improvements.
+- If you would like to contribute to this project, feel free to fork the repository and submit a pull request. Contributions are welcome, including bug fixes, feature additions, and documentation improvements.
 ________________________________________
 **License**
-This project is licensed under the MIT License. See the LICENSE file for more details.
+- This project is licensed under the MIT License. See the LICENSE file for more details.
 ________________________________________
 Thank you for using the Municipal Services Application! We hope this guide helps you make the most out of the app. If you have any questions or encounter any issues, please don't hesitate to reach out.
 
