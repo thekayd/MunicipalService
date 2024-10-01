@@ -10,3 +10,4 @@ C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalService
 C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.pdb
 C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.MainForm.resources
 C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.ViewIssuesForm.resources
+C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.LocalEventsForm.resources

@@ -57,9 +57,9 @@ namespace MunicipalServicesApp
         // Displays a message indicating that the feature is not yet available
         private void btnLocalEvents_Click_1(object sender, EventArgs e)
         {
-           
-                MessageBox.Show("This feature will be implemented later!", "Feature Not Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            // Open the Local Events and Announcements Form
+            LocalEventsForm localEventsForm = new LocalEventsForm();
+            localEventsForm.Show();
         }
 
         // This event handler is for the "Service Request Status" button
