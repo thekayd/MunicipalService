@@ -11,3 +11,16 @@ C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalService
 C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.MainForm.resources
 C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.ViewIssuesForm.resources
 C:\Users\lab_services_student\source\repos\MunicipalServicesApp\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.LocalEventsForm.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\MunicipalServicesApp.exe.config
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\MunicipalServicesApp.exe
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\MunicipalServicesApp.pdb
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.csproj.AssemblyReference.cache
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.LocalEventsForm.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.MainForm.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.Properties.Resources.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.ReportIssuesForm.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.ViewIssuesForm.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.csproj.GenerateResource.cache
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.csproj.CoreCompileInputs.cache
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.exe
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\MunicipalServicesApp.pdb

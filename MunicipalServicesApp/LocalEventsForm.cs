@@ -1,104 +1,122 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace MunicipalServicesApp
 {
     public partial class LocalEventsForm : Form
     {
-        // Dictionary to store events with Date as the key
-        SortedDictionary<DateTime, Event> eventsDict = new SortedDictionary<DateTime, Event>();
-        Stack<Event> recentEvents = new Stack<Event>(); // Stack to manage recent events
-        Queue<Event> eventQueue = new Queue<Event>(); // Queue to manage event scheduling
-        HashSet<string> uniqueCategories = new HashSet<string>(); // Set for unique categories
+        private Manager _manager;
+        private Queue<string> _searchHistory;
+        private const int MAX_SEARCH_HISTORY = 10;
 
         public LocalEventsForm()
         {
             InitializeComponent();
+            _manager = new Manager();
+            _searchHistory = new Queue<string>();
+            PopulateEventList();
+            PopulateCategoryComboBox();
         }
 
-        // Event class to store event details
-        public class Event
+        private void PopulateEventList()
         {
-            public string Name { get; set; }
-            public string Category { get; set; }
-            public string Description { get; set; }
-            public DateTime Date { get; set; }
-
-            public Event(string name, string category, string description, DateTime date)
+            listViewEvents.Items.Clear();
+            List<Event> events = _manager.GetEvents();
+            foreach (var ev in events)
             {
-                Name = name;
-                Category = category;
-                Description = description;
-                Date = date;
-            }
-
-            public override string ToString()
-            {
-                return $"{Date.ToString("d")}: {Name} - {Category}\nDescription: {Description}";
+                ListViewItem item = new ListViewItem(ev.Name);
+                item.SubItems.Add(ev.Date.ToShortDateString());
+                item.SubItems.Add(ev.Category);
+                item.Tag = ev;
+                listViewEvents.Items.Add(item);
             }
         }
 
-        // Method to handle event creation
-        private void btnAddEvent_Click(object sender, EventArgs e)
+        private void PopulateCategoryComboBox()
         {
-            string eventName = txtEventName.Text;
-            string category = txtCategory.Text;
-            string description = txtDescription.Text;
-            DateTime eventDate = dtpEventDate.Value;
-
-            Event newEvent = new Event(eventName, category, description, eventDate);
-
-            // Add to sorted dictionary, stack, queue, and sets
-            eventsDict[eventDate] = newEvent;
-            recentEvents.Push(newEvent);
-            eventQueue.Enqueue(newEvent);
-            uniqueCategories.Add(category); // Adding unique category to the set
-
-            // Clear input fields
-            txtEventName.Clear();
-            txtCategory.Clear();
-            txtDescription.Clear();
-            MessageBox.Show("Event added successfully!");
+            comboBoxCategory.Items.Clear();
+            comboBoxCategory.Items.Add("All Categories");
+            var categories = _manager.GetCategories();
+            foreach (var category in categories)
+            {
+                comboBoxCategory.Items.Add(category);
+            }
+            comboBoxCategory.SelectedIndex = 0;
         }
 
-        // Display all events sorted by date
-        private void btnDisplayEvents_Click(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
-            lstEvents.Items.Clear();
-            foreach (var eventPair in eventsDict)
+            string searchTerm = textBoxSearch.Text.Trim();
+            DateTime searchDate = dateTimePickerSearch.Value.Date;
+            string selectedCategory = comboBoxCategory.SelectedItem.ToString();
+
+            List<Event> searchResults = _manager.SearchEvents(searchTerm, searchDate, selectedCategory);
+
+            DisplaySearchResults(searchResults);
+            UpdateSearchHistory(searchTerm);
+            ShowRecommendations();
+        }
+
+        private void DisplaySearchResults(List<Event> events)
+        {
+            listViewEvents.Items.Clear();
+            foreach (var ev in events)
             {
-                lstEvents.Items.Add(eventPair.Value.ToString());
+                ListViewItem item = new ListViewItem(ev.Name);
+                item.SubItems.Add(ev.Date.ToShortDateString());
+                item.SubItems.Add(ev.Category);
+                item.Tag = ev;
+                listViewEvents.Items.Add(item);
             }
         }
 
-        // Search events by category
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void UpdateSearchHistory(string searchTerm)
         {
-            lstEvents.Items.Clear();
-            string searchCategory = txtSearchCategory.Text;
-
-            foreach (var eventPair in eventsDict)
+            if (!string.IsNullOrWhiteSpace(searchTerm))
             {
-                if (eventPair.Value.Category.ToLower().Contains(searchCategory.ToLower()))
+                if (_searchHistory.Count >= MAX_SEARCH_HISTORY)
                 {
-                    lstEvents.Items.Add(eventPair.Value.ToString());
+                    _searchHistory.Dequeue();
                 }
+                _searchHistory.Enqueue(searchTerm);
             }
         }
 
-        // Recommendation feature based on recent searches
-        private void btnRecommendations_Click(object sender, EventArgs e)
+        private void ShowRecommendations()
         {
-            lstEvents.Items.Clear();
-            if (recentEvents.Count > 0)
+            var recommendations = _manager.GetRecommendations(_searchHistory.ToList());
+            listBoxRecommendations.Items.Clear();
+            foreach (var recommendation in recommendations)
             {
-                var lastSearchedEvent = recentEvents.Peek(); // Get the last searched event
-                lstEvents.Items.Add($"Recommended based on your last search:\n{lastSearchedEvent}");
+                listBoxRecommendations.Items.Add(recommendation.Name);
+            }
+        }
+
+        private void listViewEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewEvents.SelectedItems.Count > 0)
+            {
+                Event selectedEvent = (Event)listViewEvents.SelectedItems[0].Tag;
+                textBoxEventDetails.Text = $"Name: {selectedEvent.Name}\r\n" +
+                                           $"Date: {selectedEvent.Date.ToShortDateString()}\r\n" +
+                                           $"Category: {selectedEvent.Category}\r\n" +
+                                           $"Description: {selectedEvent.Description}";
             }
             else
             {
-                lstEvents.Items.Add("No recommendations available.");
+                textBoxEventDetails.Text = string.Empty;
+            }
+        }
+
+        private void buttonCreateEvent_Click(object sender, EventArgs e)
+        {
+            EventCreateForm createForm = new EventCreateForm(_manager);
+            if (createForm.ShowDialog() == DialogResult.OK)
+            {
+                PopulateEventList();
+                PopulateCategoryComboBox();
             }
         }
     }
