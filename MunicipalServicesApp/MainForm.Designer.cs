@@ -5,16 +5,15 @@ namespace MunicipalServicesApp
 {
     partial class MainForm
     {
-        // Container for all components used within the form, to enable proper disposal of resources
-
         private System.ComponentModel.IContainer components = null;
         private Button btnReportIssues;
         private Button btnLocalEvents;
         private Button btnServiceRequestStatus;
+        private Button btnSettings;
         private Label lblHeader;
         private Panel panelHeader;
+        private PictureBox picBanner;
 
-        // Overridden method for disposing of resources when the form is closed
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -26,95 +25,137 @@ namespace MunicipalServicesApp
 
         private void InitializeComponent()
         {
-            // Initializes "Report Issues" button with properties such as color, font, and size
-
-            this.btnReportIssues = new System.Windows.Forms.Button();
-            this.btnLocalEvents = new System.Windows.Forms.Button();
-            this.btnServiceRequestStatus = new System.Windows.Forms.Button();
-            this.lblHeader = new System.Windows.Forms.Label();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.panelHeader.SuspendLayout();
-            this.SuspendLayout();
-
-
-            // btnReportIssues, Styling for "Report Issues" button, including background color and font
-            this.btnReportIssues.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.btnReportIssues.FlatAppearance.BorderSize = 0;
-            this.btnReportIssues.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportIssues.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.btnReportIssues.ForeColor = System.Drawing.Color.White;
-            this.btnReportIssues.Location = new System.Drawing.Point(250, 150);
-            this.btnReportIssues.Name = "btnReportIssues";
-            this.btnReportIssues.Size = new System.Drawing.Size(300, 50);
-            this.btnReportIssues.TabIndex = 0;
-            this.btnReportIssues.Text = "Report Issues";
-            this.btnReportIssues.UseVisualStyleBackColor = false;
-            this.btnReportIssues.Click += new System.EventHandler(this.btnReportIssues_Click);
-      
-            // btnLocalEvents, Styling for "Local Events/Announcements" button 
-            this.btnLocalEvents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.btnLocalEvents.FlatAppearance.BorderSize = 0;
-            this.btnLocalEvents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLocalEvents.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.btnLocalEvents.ForeColor = System.Drawing.Color.White;
-            this.btnLocalEvents.Location = new System.Drawing.Point(250, 250);
-            this.btnLocalEvents.Name = "btnLocalEvents";
-            this.btnLocalEvents.Size = new System.Drawing.Size(300, 50);
-            this.btnLocalEvents.TabIndex = 1;
-            this.btnLocalEvents.Text = "Local Events/Announcements";
-            this.btnLocalEvents.UseVisualStyleBackColor = false;
-            this.btnLocalEvents.Click += new System.EventHandler(this.btnLocalEvents_Click_1);
-
-            // btnServiceRequestStatus, Styling for "Service Request Status" button
-            this.btnServiceRequestStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.btnServiceRequestStatus.FlatAppearance.BorderSize = 0;
-            this.btnServiceRequestStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServiceRequestStatus.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.btnServiceRequestStatus.ForeColor = System.Drawing.Color.White;
-            this.btnServiceRequestStatus.Location = new System.Drawing.Point(250, 350);
-            this.btnServiceRequestStatus.Name = "btnServiceRequestStatus";
-            this.btnServiceRequestStatus.Size = new System.Drawing.Size(300, 50);
-            this.btnServiceRequestStatus.TabIndex = 2;
-            this.btnServiceRequestStatus.Text = "Service Request Status";
-            this.btnServiceRequestStatus.UseVisualStyleBackColor = false;
-            this.btnServiceRequestStatus.Click += new System.EventHandler(this.btnServiceRequestStatus_Click_1);
-
-            // lblHeader, Styling for the header label, positioned within the header panel
-            this.lblHeader.AutoSize = true;
-            this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.lblHeader.ForeColor = System.Drawing.Color.White;
-            this.lblHeader.Location = new System.Drawing.Point(50, 20);
-            this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(486, 45);
-            this.lblHeader.TabIndex = 0;
-            this.lblHeader.Text = "Welcome to Municipal Services";
-            this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
-            // panelHeader, Styling for the header panel that contains the label
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
-            this.panelHeader.Controls.Add(this.lblHeader);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(800, 100);
-            this.panelHeader.TabIndex = 0;
-
-            // MainForm, Main form properties like size, background color, and default load behavior
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.panelHeader);
-            this.Controls.Add(this.btnReportIssues);
-            this.Controls.Add(this.btnLocalEvents);
-            this.Controls.Add(this.btnServiceRequestStatus);
-            this.Name = "MainForm";
-            this.Text = "Municipal Services App";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
-            this.ResumeLayout(false);
-
+            btnReportIssues = new Button();
+            btnLocalEvents = new Button();
+            btnServiceRequestStatus = new Button();
+            btnSettings = new Button();
+            lblHeader = new Label();
+            panelHeader = new Panel();
+            picBanner = new PictureBox();
+            panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picBanner).BeginInit();
+            SuspendLayout();
+            // 
+            // btnReportIssues
+            // 
+            btnReportIssues.BackColor = Color.FromArgb(33, 150, 243);
+            btnReportIssues.FlatAppearance.BorderSize = 0;
+            btnReportIssues.FlatStyle = FlatStyle.Flat;
+            btnReportIssues.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnReportIssues.ForeColor = Color.White;
+            btnReportIssues.Location = new Point(734, 159);
+            btnReportIssues.Margin = new Padding(4, 3, 4, 3);
+            btnReportIssues.Name = "btnReportIssues";
+            btnReportIssues.Size = new Size(350, 58);
+            btnReportIssues.TabIndex = 0;
+            btnReportIssues.Text = "Report Issues";
+            btnReportIssues.UseVisualStyleBackColor = false;
+            btnReportIssues.Click += btnReportIssues_Click;
+            // 
+            // btnLocalEvents
+            // 
+            btnLocalEvents.BackColor = Color.FromArgb(33, 150, 243);
+            btnLocalEvents.FlatAppearance.BorderSize = 0;
+            btnLocalEvents.FlatStyle = FlatStyle.Flat;
+            btnLocalEvents.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnLocalEvents.ForeColor = Color.White;
+            btnLocalEvents.Location = new Point(734, 246);
+            btnLocalEvents.Margin = new Padding(4, 3, 4, 3);
+            btnLocalEvents.Name = "btnLocalEvents";
+            btnLocalEvents.Size = new Size(350, 58);
+            btnLocalEvents.TabIndex = 1;
+            btnLocalEvents.Text = "Local Events/Announcements";
+            btnLocalEvents.UseVisualStyleBackColor = false;
+            btnLocalEvents.Click += btnLocalEvents_Click;
+            // 
+            // btnServiceRequestStatus
+            // 
+            btnServiceRequestStatus.BackColor = Color.FromArgb(33, 150, 243);
+            btnServiceRequestStatus.FlatAppearance.BorderSize = 0;
+            btnServiceRequestStatus.FlatStyle = FlatStyle.Flat;
+            btnServiceRequestStatus.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnServiceRequestStatus.ForeColor = Color.White;
+            btnServiceRequestStatus.Location = new Point(734, 332);
+            btnServiceRequestStatus.Margin = new Padding(4, 3, 4, 3);
+            btnServiceRequestStatus.Name = "btnServiceRequestStatus";
+            btnServiceRequestStatus.Size = new Size(350, 58);
+            btnServiceRequestStatus.TabIndex = 2;
+            btnServiceRequestStatus.Text = "Service Request Status";
+            btnServiceRequestStatus.UseVisualStyleBackColor = false;
+            btnServiceRequestStatus.Click += btnServiceRequestStatus_Click;
+            // 
+            // btnSettings
+            // 
+            btnSettings.BackColor = Color.FromArgb(33, 150, 243);
+            btnSettings.FlatAppearance.BorderSize = 0;
+            btnSettings.FlatStyle = FlatStyle.Flat;
+            btnSettings.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnSettings.ForeColor = Color.White;
+            btnSettings.Location = new Point(734, 419);
+            btnSettings.Margin = new Padding(4, 3, 4, 3);
+            btnSettings.Name = "btnSettings";
+            btnSettings.Size = new Size(350, 58);
+            btnSettings.TabIndex = 3;
+            btnSettings.Text = "Settings";
+            btnSettings.UseVisualStyleBackColor = false;
+            btnSettings.Click += btnSettings_Click;
+            // 
+            // lblHeader
+            // 
+            lblHeader.AutoSize = true;
+            lblHeader.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblHeader.ForeColor = Color.White;
+            lblHeader.Location = new Point(81, 35);
+            lblHeader.Margin = new Padding(4, 0, 4, 0);
+            lblHeader.Name = "lblHeader";
+            lblHeader.Size = new Size(307, 90);
+            lblHeader.TabIndex = 0;
+            lblHeader.Text = "Municipal Services \nPortal";
+            lblHeader.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(33, 150, 243);
+            panelHeader.Controls.Add(lblHeader);
+            panelHeader.Controls.Add(picBanner);
+            panelHeader.Dock = DockStyle.Left;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Margin = new Padding(4, 3, 4, 3);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(578, 692);
+            panelHeader.TabIndex = 0;
+            // 
+            // picBanner
+            // 
+            picBanner.Location = new Point(31, 139);
+            picBanner.Margin = new Padding(4, 3, 4, 3);
+            picBanner.Name = "picBanner";
+            picBanner.Size = new Size(426, 475);
+            picBanner.SizeMode = PictureBoxSizeMode.Zoom;
+            picBanner.TabIndex = 1;
+            picBanner.TabStop = false;
+            picBanner.Click += picBanner_Click;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(1333, 692);
+            Controls.Add(panelHeader);
+            Controls.Add(btnReportIssues);
+            Controls.Add(btnLocalEvents);
+            Controls.Add(btnServiceRequestStatus);
+            Controls.Add(btnSettings);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "MainForm";
+            Text = "Municipal Services App";
+            FormClosing += MainForm_FormClosing;
+            Load += MainForm_Load;
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picBanner).EndInit();
+            ResumeLayout(false);
         }
     }
 }

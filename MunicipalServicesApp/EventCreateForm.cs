@@ -58,5 +58,21 @@ namespace MunicipalServicesApp
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        private void EventCreateForm_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void ReturnToMainForm()
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.Show();
+            this.Close();
+        }
+
+        private void btnBackToMainMenu_Click(object sender, EventArgs e)
+        {
+            ReturnToMainForm();
+        }
     }
 }

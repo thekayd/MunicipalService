@@ -15,124 +15,137 @@
 
         private void InitializeComponent()
         {
-            this.labelName = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
-            this.labelCategory = new System.Windows.Forms.Label();
-            this.textBoxCategory = new System.Windows.Forms.TextBox();
-            this.labelDescription = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            labelName = new System.Windows.Forms.Label();
+            textBoxName = new System.Windows.Forms.TextBox();
+            labelDate = new System.Windows.Forms.Label();
+            dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
+            labelCategory = new System.Windows.Forms.Label();
+            textBoxCategory = new System.Windows.Forms.TextBox();
+            labelDescription = new System.Windows.Forms.Label();
+            textBoxDescription = new System.Windows.Forms.TextBox();
+            buttonCreate = new System.Windows.Forms.Button();
+            buttonCancel = new System.Windows.Forms.Button();
+            btnBackToMainMenu = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // labelName
             // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(12, 15);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(39, 15);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "Name";
+            labelName.AutoSize = true;
+            labelName.Location = new System.Drawing.Point(12, 15);
+            labelName.Name = "labelName";
+            labelName.Size = new System.Drawing.Size(39, 15);
+            labelName.TabIndex = 0;
+            labelName.Text = "Name";
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(92, 12);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(200, 23);
-            this.textBoxName.TabIndex = 1;
+            textBoxName.Location = new System.Drawing.Point(92, 12);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new System.Drawing.Size(200, 23);
+            textBoxName.TabIndex = 1;
             // 
             // labelDate
             // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.Location = new System.Drawing.Point(12, 44);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(31, 15);
-            this.labelDate.TabIndex = 2;
-            this.labelDate.Text = "Date";
+            labelDate.AutoSize = true;
+            labelDate.Location = new System.Drawing.Point(12, 44);
+            labelDate.Name = "labelDate";
+            labelDate.Size = new System.Drawing.Size(31, 15);
+            labelDate.TabIndex = 2;
+            labelDate.Text = "Date";
             // 
             // dateTimePickerDate
             // 
-            this.dateTimePickerDate.Location = new System.Drawing.Point(92, 41);
-            this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.Size = new System.Drawing.Size(200, 23);
-            this.dateTimePickerDate.TabIndex = 3;
+            dateTimePickerDate.Location = new System.Drawing.Point(92, 41);
+            dateTimePickerDate.Name = "dateTimePickerDate";
+            dateTimePickerDate.Size = new System.Drawing.Size(200, 23);
+            dateTimePickerDate.TabIndex = 3;
             // 
             // labelCategory
             // 
-            this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(12, 73);
-            this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(55, 15);
-            this.labelCategory.TabIndex = 4;
-            this.labelCategory.Text = "Category";
+            labelCategory.AutoSize = true;
+            labelCategory.Location = new System.Drawing.Point(12, 73);
+            labelCategory.Name = "labelCategory";
+            labelCategory.Size = new System.Drawing.Size(55, 15);
+            labelCategory.TabIndex = 4;
+            labelCategory.Text = "Category";
             // 
             // textBoxCategory
             // 
-            this.textBoxCategory.Location = new System.Drawing.Point(92, 70);
-            this.textBoxCategory.Name = "textBoxCategory";
-            this.textBoxCategory.Size = new System.Drawing.Size(200, 23);
-            this.textBoxCategory.TabIndex = 5;
+            textBoxCategory.Location = new System.Drawing.Point(92, 70);
+            textBoxCategory.Name = "textBoxCategory";
+            textBoxCategory.Size = new System.Drawing.Size(200, 23);
+            textBoxCategory.TabIndex = 5;
             // 
             // labelDescription
             // 
-            this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(12, 102);
-            this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(67, 15);
-            this.labelDescription.TabIndex = 6;
-            this.labelDescription.Text = "Description";
+            labelDescription.AutoSize = true;
+            labelDescription.Location = new System.Drawing.Point(12, 102);
+            labelDescription.Name = "labelDescription";
+            labelDescription.Size = new System.Drawing.Size(67, 15);
+            labelDescription.TabIndex = 6;
+            labelDescription.Text = "Description";
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(92, 99);
-            this.textBoxDescription.Multiline = true;
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(200, 100);
-            this.textBoxDescription.TabIndex = 7;
+            textBoxDescription.Location = new System.Drawing.Point(92, 99);
+            textBoxDescription.Multiline = true;
+            textBoxDescription.Name = "textBoxDescription";
+            textBoxDescription.Size = new System.Drawing.Size(200, 100);
+            textBoxDescription.TabIndex = 7;
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(92, 205);
-            this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreate.TabIndex = 8;
-            this.buttonCreate.Text = "Create";
-            this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            buttonCreate.Location = new System.Drawing.Point(92, 205);
+            buttonCreate.Name = "buttonCreate";
+            buttonCreate.Size = new System.Drawing.Size(75, 23);
+            buttonCreate.TabIndex = 8;
+            buttonCreate.Text = "Create";
+            buttonCreate.UseVisualStyleBackColor = true;
+            buttonCreate.Click += buttonCreate_Click;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(173, 205);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 9;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            buttonCancel.Location = new System.Drawing.Point(173, 205);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new System.Drawing.Size(75, 23);
+            buttonCancel.TabIndex = 9;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
+            // btnBackToMainMenu
+            // 
+            btnBackToMainMenu.Location = new System.Drawing.Point(92, 234);
+            btnBackToMainMenu.Name = "btnBackToMainMenu";
+            btnBackToMainMenu.Size = new System.Drawing.Size(156, 23);
+            btnBackToMainMenu.TabIndex = 10;
+            btnBackToMainMenu.Text = "Back to Main Menu";
+            btnBackToMainMenu.UseVisualStyleBackColor = true;
+            btnBackToMainMenu.Click += btnBackToMainMenu_Click;
             // 
             // EventCreateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 241);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonCreate);
-            this.Controls.Add(this.textBoxDescription);
-            this.Controls.Add(this.labelDescription);
-            this.Controls.Add(this.textBoxCategory);
-            this.Controls.Add(this.labelCategory);
-            this.Controls.Add(this.dateTimePickerDate);
-            this.Controls.Add(this.labelDate);
-            this.Controls.Add(this.textBoxName);
-            this.Controls.Add(this.labelName);
-            this.Name = "EventCreateForm";
-            this.Text = "Create New Event";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(420, 340);
+            Controls.Add(btnBackToMainMenu);
+            Controls.Add(buttonCancel);
+            Controls.Add(buttonCreate);
+            Controls.Add(textBoxDescription);
+            Controls.Add(labelDescription);
+            Controls.Add(textBoxCategory);
+            Controls.Add(labelCategory);
+            Controls.Add(dateTimePickerDate);
+            Controls.Add(labelDate);
+            Controls.Add(textBoxName);
+            Controls.Add(labelName);
+            Name = "EventCreateForm";
+            Text = "Create New Event";
+            Load += EventCreateForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
+        private System.Windows.Forms.Button btnBackToMainMenu;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelDate;

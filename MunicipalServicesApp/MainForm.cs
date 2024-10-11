@@ -24,6 +24,7 @@ namespace MunicipalServicesApp
             btnReportIssues.Left = centerX - (btnReportIssues.Width / 2);
             btnLocalEvents.Left = centerX - (btnLocalEvents.Width / 2);
             btnServiceRequestStatus.Left = centerX - (btnServiceRequestStatus.Width / 2);
+            btnSettings.Left = centerX - (btnSettings.Width / 2);
         }
 
         private void btnReportIssues_Click(object sender, EventArgs e)
@@ -41,26 +42,36 @@ namespace MunicipalServicesApp
             lblHeader.ForeColor = Color.FromArgb(33, 37, 41);
         }
 
-        private void btnLocalEvents_Click_1(object sender, EventArgs e)
+        private void btnLocalEvents_Click(object sender, EventArgs e)
         {
             OpenNewForm(new LocalEventsForm());
         }
 
         private void OpenNewForm(Form newForm)
         {
-            newForm.FormClosed += (s, args) => this.Close();
+            newForm.FormClosed += (s, args) => this.Show();
             newForm.Show();
             this.Hide();
         }
 
-        private void btnServiceRequestStatus_Click_1(object sender, EventArgs e)
+        private void btnServiceRequestStatus_Click(object sender, EventArgs e)
         {
             MessageBox.Show("This feature will be implemented later!", "Feature Not Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            OpenNewForm(new SettingsForm());
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void picBanner_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

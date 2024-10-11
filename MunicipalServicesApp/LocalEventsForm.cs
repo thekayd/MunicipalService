@@ -113,11 +113,36 @@ namespace MunicipalServicesApp
         private void buttonCreateEvent_Click(object sender, EventArgs e)
         {
             EventCreateForm createForm = new EventCreateForm(_manager);
-            if (createForm.ShowDialog() == DialogResult.OK)
+            createForm.FormClosed += (s, args) =>
             {
+                this.Show();
                 PopulateEventList();
                 PopulateCategoryComboBox();
+            };
+            createForm.Show();
+            this.Hide();
+        }
+
+        private void btnBackToMainMenu_Click(object sender, EventArgs e)
+        {
+            MainForm mainForm = new MainForm();
+            mainForm.FormClosed += (s, args) => this.Close();
+            mainForm.Show();
+            this.Hide();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
             }
+        }
+
+        private void LocalEventsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
