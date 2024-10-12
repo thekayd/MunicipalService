@@ -6,23 +6,32 @@ namespace MunicipalServicesApp
 {
     public class Manager
     {
-        private List<Event> _events;
+        private static List<Event> _events = new List<Event>(); // Changed to static
         private Dictionary<string, HashSet<Event>> _eventsByCategory;
         private SortedDictionary<DateTime, List<Event>> _eventsByDate;
         private PriorityQueue<Event, DateTime> _upcomingEvents;
 
         public Manager()
         {
-            _events = new List<Event>();
             _eventsByCategory = new Dictionary<string, HashSet<Event>>();
             _eventsByDate = new SortedDictionary<DateTime, List<Event>>();
             _upcomingEvents = new PriorityQueue<Event, DateTime>();
+
+            // Populate other data structures with existing events
+            foreach (var ev in _events)
+            {
+                AddEventToDataStructures(ev);
+            }
         }
 
         public void AddEvent(Event newEvent)
         {
             _events.Add(newEvent);
+            AddEventToDataStructures(newEvent);
+        }
 
+        private void AddEventToDataStructures(Event newEvent)
+        {
             if (!_eventsByCategory.ContainsKey(newEvent.Category))
             {
                 _eventsByCategory[newEvent.Category] = new HashSet<Event>();

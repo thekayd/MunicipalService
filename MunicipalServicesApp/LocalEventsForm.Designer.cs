@@ -39,7 +39,7 @@ namespace MunicipalServicesApp
             // 
             listViewEvents.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3 });
             listViewEvents.FullRowSelect = true;
-            listViewEvents.Location = new Point(12, 41);
+            listViewEvents.Location = new Point(12, 64);
             listViewEvents.Name = "listViewEvents";
             listViewEvents.Size = new Size(460, 200);
             listViewEvents.TabIndex = 0;
@@ -96,7 +96,7 @@ namespace MunicipalServicesApp
             // 
             // textBoxEventDetails
             // 
-            textBoxEventDetails.Location = new Point(12, 247);
+            textBoxEventDetails.Location = new Point(529, 262);
             textBoxEventDetails.Multiline = true;
             textBoxEventDetails.Name = "textBoxEventDetails";
             textBoxEventDetails.ReadOnly = true;
@@ -121,6 +121,7 @@ namespace MunicipalServicesApp
             buttonCreateEvent.Text = "Create Event";
             buttonCreateEvent.UseVisualStyleBackColor = true;
             buttonCreateEvent.Click += buttonCreateEvent_Click;
+            // 
             // btnBackToMainMenu
             // 
             btnBackToMainMenu.Location = new Point(118, 438);
@@ -135,7 +136,7 @@ namespace MunicipalServicesApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(597, 471);
+            ClientSize = new Size(752, 545);
             Controls.Add(buttonCreateEvent);
             Controls.Add(btnBackToMainMenu);
             Controls.Add(listBoxRecommendations);

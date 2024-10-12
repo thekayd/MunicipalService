@@ -7,18 +7,30 @@ namespace MunicipalServicesApp
 {
     public partial class LocalEventsForm : Form
     {
-        private Manager _manager;
+        private static Manager _manager;
         private Queue<string> _searchHistory;
         private const int MAX_SEARCH_HISTORY = 10;
 
         public LocalEventsForm()
         {
             InitializeComponent();
-            _manager = new Manager();
+            if (_manager == null) // Initialize only if it's null
+            {
+                _manager = new Manager();
+                AddHardCodedEvents(); // Add hard-coded events
+            }
             _searchHistory = new Queue<string>();
             PopulateEventList();
             PopulateCategoryComboBox();
         }
+
+        private void AddHardCodedEvents()
+        {
+            _manager.AddEvent(new Event("Community Cleanup", DateTime.Now.AddDays(7), "Environment", "Join us for a community-wide cleanup event!"));
+            _manager.AddEvent(new Event("Local Art Exhibition", DateTime.Now.AddDays(14), "Culture", "Showcasing artwork from local artists."));
+            _manager.AddEvent(new Event("Town Hall Meeting", DateTime.Now.AddDays(21), "Government", "Discussing upcoming city projects and initiatives."));
+        }
+
 
         private void PopulateEventList()
         {
@@ -45,7 +57,41 @@ namespace MunicipalServicesApp
             }
             comboBoxCategory.SelectedIndex = 0;
         }
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowCategoryBasedRecommendations();
+        }
 
+        private void ShowCategoryBasedRecommendations()
+        {
+            string selectedCategory = comboBoxCategory.SelectedItem.ToString();
+            List<Event> recommendations;
+
+            if (selectedCategory == "All Categories")
+            {
+                recommendations = _manager.GetRecommendations(_searchHistory.ToList());
+            }
+            else
+            {
+                recommendations = GetCategoryBasedRecommendations(selectedCategory);
+            }
+
+            listBoxRecommendations.Items.Clear();
+            foreach (var recommendation in recommendations)
+            {
+                listBoxRecommendations.Items.Add(recommendation.Name);
+            }
+        }
+
+        private List<Event> GetCategoryBasedRecommendations(string category)
+        {
+            var allEvents = _manager.GetEvents();
+            return allEvents
+                .Where(e => e.Category == category)
+                .OrderBy(e => e.Date)
+                .Take(5)
+                .ToList();
+        }
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             string searchTerm = textBoxSearch.Text.Trim();
@@ -57,6 +103,7 @@ namespace MunicipalServicesApp
             DisplaySearchResults(searchResults);
             UpdateSearchHistory(searchTerm);
             ShowRecommendations();
+            ShowCategoryBasedRecommendations();
         }
 
         private void DisplaySearchResults(List<Event> events)

@@ -25,13 +25,13 @@
             textBoxDescription = new System.Windows.Forms.TextBox();
             buttonCreate = new System.Windows.Forms.Button();
             buttonCancel = new System.Windows.Forms.Button();
-            btnBackToMainMenu = new System.Windows.Forms.Button();
+           // btnBackToMainMenu = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // labelName
             // 
             labelName.AutoSize = true;
-            labelName.Location = new System.Drawing.Point(12, 15);
+            labelName.Location = new System.Drawing.Point(35, 24);
             labelName.Name = "labelName";
             labelName.Size = new System.Drawing.Size(39, 15);
             labelName.TabIndex = 0;
@@ -39,7 +39,7 @@
             // 
             // textBoxName
             // 
-            textBoxName.Location = new System.Drawing.Point(92, 12);
+            textBoxName.Location = new System.Drawing.Point(115, 24);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new System.Drawing.Size(200, 23);
             textBoxName.TabIndex = 1;
@@ -47,7 +47,7 @@
             // labelDate
             // 
             labelDate.AutoSize = true;
-            labelDate.Location = new System.Drawing.Point(12, 44);
+            labelDate.Location = new System.Drawing.Point(35, 65);
             labelDate.Name = "labelDate";
             labelDate.Size = new System.Drawing.Size(31, 15);
             labelDate.TabIndex = 2;
@@ -55,7 +55,7 @@
             // 
             // dateTimePickerDate
             // 
-            dateTimePickerDate.Location = new System.Drawing.Point(92, 41);
+            dateTimePickerDate.Location = new System.Drawing.Point(115, 65);
             dateTimePickerDate.Name = "dateTimePickerDate";
             dateTimePickerDate.Size = new System.Drawing.Size(200, 23);
             dateTimePickerDate.TabIndex = 3;
@@ -63,7 +63,7 @@
             // labelCategory
             // 
             labelCategory.AutoSize = true;
-            labelCategory.Location = new System.Drawing.Point(12, 73);
+            labelCategory.Location = new System.Drawing.Point(35, 108);
             labelCategory.Name = "labelCategory";
             labelCategory.Size = new System.Drawing.Size(55, 15);
             labelCategory.TabIndex = 4;
@@ -71,7 +71,7 @@
             // 
             // textBoxCategory
             // 
-            textBoxCategory.Location = new System.Drawing.Point(92, 70);
+            textBoxCategory.Location = new System.Drawing.Point(115, 108);
             textBoxCategory.Name = "textBoxCategory";
             textBoxCategory.Size = new System.Drawing.Size(200, 23);
             textBoxCategory.TabIndex = 5;
@@ -79,7 +79,7 @@
             // labelDescription
             // 
             labelDescription.AutoSize = true;
-            labelDescription.Location = new System.Drawing.Point(12, 102);
+            labelDescription.Location = new System.Drawing.Point(35, 148);
             labelDescription.Name = "labelDescription";
             labelDescription.Size = new System.Drawing.Size(67, 15);
             labelDescription.TabIndex = 6;
@@ -87,17 +87,17 @@
             // 
             // textBoxDescription
             // 
-            textBoxDescription.Location = new System.Drawing.Point(92, 99);
+            textBoxDescription.Location = new System.Drawing.Point(115, 148);
             textBoxDescription.Multiline = true;
             textBoxDescription.Name = "textBoxDescription";
-            textBoxDescription.Size = new System.Drawing.Size(200, 100);
+            textBoxDescription.Size = new System.Drawing.Size(200, 108);
             textBoxDescription.TabIndex = 7;
             // 
             // buttonCreate
             // 
-            buttonCreate.Location = new System.Drawing.Point(92, 205);
+            buttonCreate.Location = new System.Drawing.Point(113, 287);
             buttonCreate.Name = "buttonCreate";
-            buttonCreate.Size = new System.Drawing.Size(75, 23);
+            buttonCreate.Size = new System.Drawing.Size(86, 23);
             buttonCreate.TabIndex = 8;
             buttonCreate.Text = "Create";
             buttonCreate.UseVisualStyleBackColor = true;
@@ -105,29 +105,30 @@
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new System.Drawing.Point(173, 205);
+            buttonCancel.Location = new System.Drawing.Point(229, 287);
             buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new System.Drawing.Size(75, 23);
+            buttonCancel.Size = new System.Drawing.Size(86, 23);
             buttonCancel.TabIndex = 9;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
             buttonCancel.Click += buttonCancel_Click;
+            // 
             // btnBackToMainMenu
             // 
-            btnBackToMainMenu.Location = new System.Drawing.Point(92, 234);
-            btnBackToMainMenu.Name = "btnBackToMainMenu";
-            btnBackToMainMenu.Size = new System.Drawing.Size(156, 23);
-            btnBackToMainMenu.TabIndex = 10;
-            btnBackToMainMenu.Text = "Back to Main Menu";
-            btnBackToMainMenu.UseVisualStyleBackColor = true;
-            btnBackToMainMenu.Click += btnBackToMainMenu_Click;
+            //btnBackToMainMenu.Location = new System.Drawing.Point(124, 328);
+            //btnBackToMainMenu.Name = "btnBackToMainMenu";
+            //btnBackToMainMenu.Size = new System.Drawing.Size(180, 36);
+            //btnBackToMainMenu.TabIndex = 10;
+            //btnBackToMainMenu.Text = "Back to Main Menu";
+            //btnBackToMainMenu.UseVisualStyleBackColor = true;
+            //btnBackToMainMenu.Click += btnBackToMainMenu_Click;
             // 
             // EventCreateForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(420, 340);
-            Controls.Add(btnBackToMainMenu);
+            ClientSize = new System.Drawing.Size(742, 534);
+           // Controls.Add(btnBackToMainMenu);
             Controls.Add(buttonCancel);
             Controls.Add(buttonCreate);
             Controls.Add(textBoxDescription);
@@ -145,7 +146,7 @@
             PerformLayout();
         }
 
-        private System.Windows.Forms.Button btnBackToMainMenu;
+        //private System.Windows.Forms.Button btnBackToMainMenu;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelDate;

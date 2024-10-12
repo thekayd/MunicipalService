@@ -70,9 +70,9 @@ namespace MunicipalServicesApp
             this.Close();
         }
 
-        private void btnBackToMainMenu_Click(object sender, EventArgs e)
-        {
-            ReturnToMainForm();
-        }
+        //private void btnBackToMainMenu_Click(object sender, EventArgs e)
+        //{
+        //    ReturnToMainForm();
+        //}
     }
 }
