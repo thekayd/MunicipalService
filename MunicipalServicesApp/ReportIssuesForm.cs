@@ -212,7 +212,7 @@ namespace MunicipalServicesApp
 
         private void ReportIssuesForm_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
         }
 
         private void ReportIssuesForm_FormClosing(object sender, FormClosingEventArgs e)

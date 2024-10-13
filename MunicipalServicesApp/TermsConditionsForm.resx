@@ -117,4 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="rtbTermsConditions.Text" xml:space="preserve">
+    <value>1. Acceptance of Terms
+
+By using this Municipal Services Application, you agree to comply with and be bound by the following terms and conditions. If you do not agree to these terms, please do not use the application.
+
+2. Use of the Application
+
+You agree to use the application only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of the application.
+
+3. Privacy Policy
+
+Your use of the application is also governed by our Privacy Policy, which is incorporated into these terms and conditions by reference.
+
+4. Modifications to the Application
+
+We reserve the right to modify or discontinue, temporarily or permanently, the application or any features or portions thereof without prior notice.
+
+5. Limitation of Liability
+
+The application and all information, content, materials, products and services included on or otherwise made available to you through the application are provided on an "as is" and "as available" basis.
+
+6. Governing Law
+
+These terms and conditions are governed by and construed in accordance with the laws of [Your Jurisdiction].
+
+7. Changes to Terms
+
+We reserve the right to update these terms and conditions at any time. We will provide notice of any material changes to these terms.
+
+By using this application, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions.</value>
+  </data>
 </root>

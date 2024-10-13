@@ -1,4 +1,9 @@
-﻿namespace MunicipalServicesApp
+﻿using System.IO;
+using System.Drawing;
+using System.Windows.Forms;
+
+
+namespace MunicipalServicesApp
 {
     partial class SettingsForm
     {
@@ -65,6 +70,9 @@
             picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             picBanner.TabIndex = 1;
             picBanner.TabStop = false;
+            string imagePath = Path.Combine(Application.StartupPath, "images", "SettingsImage.jpg");
+            picBanner.Image = Image.FromFile(imagePath);
+
             // 
             // btnReview
             // 
@@ -94,7 +102,7 @@
             btnTermsConditions.Name = "btnTermsConditions";
             btnTermsConditions.Size = new System.Drawing.Size(350, 58);
             btnTermsConditions.TabIndex = 2;
-            btnTermsConditions.Text = "Terms & Conditions";
+            btnTermsConditions.Text = "Terms/Conditions";
             btnTermsConditions.UseVisualStyleBackColor = false;
             btnTermsConditions.Click += btnTermsConditions_Click;
             // 

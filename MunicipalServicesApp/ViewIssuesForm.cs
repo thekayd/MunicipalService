@@ -81,7 +81,7 @@ namespace MunicipalServicesApp
 
         private void ViewIssuesForm_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+           //this.WindowState = FormWindowState.Maximized;
         }
 
         private void ViewIssuesForm_FormClosing(object sender, FormClosingEventArgs e)

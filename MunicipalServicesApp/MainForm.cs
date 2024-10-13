@@ -34,10 +34,10 @@ namespace MunicipalServicesApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+           // this.WindowState = FormWindowState.Maximized;
             this.BackColor = Color.FromArgb(240, 240, 240);
             this.Text = "Municipal Services Portal";
-            lblHeader.Text = "Welcome to Municipal Services";
+            lblHeader.Text = "Municipal Services";
             lblHeader.Font = new Font("Segoe UI", 24, FontStyle.Bold);
             lblHeader.ForeColor = Color.FromArgb(33, 37, 41);
         }

@@ -200,6 +200,29 @@ namespace MunicipalServicesApp
                 item.Tag = ev;
                 listViewEvents.Items.Add(item);
             }
+
+            if (events.Count > 0)
+            {
+                if (events.Count == 1)
+                {
+                    // Display details of the single event
+                    Event ev = events[0];
+                    textBoxEventDetails.Text = $"Name: {ev.Name}\r\n" +
+                                               $"Date: {ev.Date.ToShortDateString()}\r\n" +
+                                               $"Category: {ev.Category}\r\n" +
+                                               $"Description: {ev.Description}";
+                }
+                else
+                {
+                    // Display a summary of all events
+                    textBoxEventDetails.Text = $"Found {events.Count} events:\r\n\r\n" +
+                        string.Join("\r\n", events.Select(ev => $"- {ev.Name} ({ev.Date.ToShortDateString()})"));
+                }
+            }
+            else
+            {
+                textBoxEventDetails.Text = "No events found matching the search criteria.";
+            }
         }
 
         private void UpdateSearchHistory(string searchTerm)

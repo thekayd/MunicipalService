@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
+
 
 namespace MunicipalServicesApp
 {
@@ -72,7 +75,8 @@ namespace MunicipalServicesApp
             this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBanner.TabIndex = 1;
             this.picBanner.TabStop = false;
-           // this.picBanner.Image = System.Drawing.Image.FromFile("review_banner.jpg"); // Make sure to add this image to your project
+            string imagePath = Path.Combine(Application.StartupPath, "images", "ReviewStarImage.jpg");
+            picBanner.Image = Image.FromFile(imagePath);
 
             // lblTitle
             this.lblTitle.Location = new System.Drawing.Point(350, 30);

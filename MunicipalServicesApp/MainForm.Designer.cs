@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace MunicipalServicesApp
 {
@@ -43,7 +44,7 @@ namespace MunicipalServicesApp
             btnReportIssues.FlatStyle = FlatStyle.Flat;
             btnReportIssues.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnReportIssues.ForeColor = Color.White;
-            btnReportIssues.Location = new Point(665, 193);
+            btnReportIssues.Location = new Point(630, 185);
             btnReportIssues.Margin = new Padding(4, 3, 4, 3);
             btnReportIssues.Name = "btnReportIssues";
             btnReportIssues.Size = new Size(350, 58);
@@ -59,7 +60,7 @@ namespace MunicipalServicesApp
             btnLocalEvents.FlatStyle = FlatStyle.Flat;
             btnLocalEvents.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnLocalEvents.ForeColor = Color.White;
-            btnLocalEvents.Location = new Point(665, 280);
+            btnLocalEvents.Location = new Point(630, 272);
             btnLocalEvents.Margin = new Padding(4, 3, 4, 3);
             btnLocalEvents.Name = "btnLocalEvents";
             btnLocalEvents.Size = new Size(350, 58);
@@ -75,7 +76,7 @@ namespace MunicipalServicesApp
             btnServiceRequestStatus.FlatStyle = FlatStyle.Flat;
             btnServiceRequestStatus.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnServiceRequestStatus.ForeColor = Color.White;
-            btnServiceRequestStatus.Location = new Point(665, 366);
+            btnServiceRequestStatus.Location = new Point(630, 358);
             btnServiceRequestStatus.Margin = new Padding(4, 3, 4, 3);
             btnServiceRequestStatus.Name = "btnServiceRequestStatus";
             btnServiceRequestStatus.Size = new Size(350, 58);
@@ -91,7 +92,7 @@ namespace MunicipalServicesApp
             btnSettings.FlatStyle = FlatStyle.Flat;
             btnSettings.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             btnSettings.ForeColor = Color.White;
-            btnSettings.Location = new Point(665, 453);
+            btnSettings.Location = new Point(630, 445);
             btnSettings.Margin = new Padding(4, 3, 4, 3);
             btnSettings.Name = "btnSettings";
             btnSettings.Size = new Size(350, 58);
@@ -127,20 +128,23 @@ namespace MunicipalServicesApp
             // 
             // picBanner
             // 
-            picBanner.Location = new Point(31, 139);
+            picBanner.Location = new Point(0, 120);
             picBanner.Margin = new Padding(4, 3, 4, 3);
             picBanner.Name = "picBanner";
-            picBanner.Size = new Size(239, 154);
+            picBanner.Size = new Size(360, 461);
             picBanner.SizeMode = PictureBoxSizeMode.Zoom;
             picBanner.TabIndex = 1;
             picBanner.TabStop = false;
+            string imagePath = Path.Combine(Application.StartupPath, "images", "Nelson.jpg");
+            picBanner.Image = Image.FromFile(imagePath);
+
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1135, 692);
+            ClientSize = new Size(1153, 692);
             Controls.Add(panelHeader);
             Controls.Add(btnReportIssues);
             Controls.Add(btnLocalEvents);

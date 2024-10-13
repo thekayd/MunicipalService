@@ -23,3 +23,6 @@ C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug
 C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.ReviewForm.resources
 C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.TermsConditionsForm.resources
 C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\net8.0-windows\images\Nelson.jpg
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\net8.0-windows\images\GoldenStar.jpg
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\net8.0-windows\images\SettingsImage.jpg
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\net8.0-windows\images\ReviewStarImage.jpg
