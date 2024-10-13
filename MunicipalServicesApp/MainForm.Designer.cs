@@ -130,7 +130,7 @@ namespace MunicipalServicesApp
             picBanner.Location = new Point(31, 139);
             picBanner.Margin = new Padding(4, 3, 4, 3);
             picBanner.Name = "picBanner";
-            picBanner.Size = new Size(239, 475);
+            picBanner.Size = new Size(239, 154);
             picBanner.SizeMode = PictureBoxSizeMode.Zoom;
             picBanner.TabIndex = 1;
             picBanner.TabStop = false;

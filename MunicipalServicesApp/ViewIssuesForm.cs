@@ -27,6 +27,7 @@ namespace MunicipalServicesApp
         {
             int centerX = this.ClientSize.Width / 2;
 
+            lblFilterLocation.Left = centerX - (lblFilterLocation.Width / 4);
             txtFilterLocation.Left = centerX - (txtFilterLocation.Width / 2);
             btnFilter.Left = centerX - (btnFilter.Width / 2);
             lstIssues.Left = centerX - (lstIssues.Width / 2);
@@ -94,6 +95,11 @@ namespace MunicipalServicesApp
         private void lstIssues_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Handles issue selection if needed
+        }
+
+        private void lblFilterLocation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

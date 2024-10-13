@@ -26,102 +26,142 @@ namespace MunicipalServicesApp
 
         private void InitializeComponent()
         {
-            this.txtFilterLocation = new System.Windows.Forms.TextBox();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.btnBackToMainMenu = new System.Windows.Forms.Button();
-            this.btnReportIssue = new System.Windows.Forms.Button();
-            this.lstIssues = new System.Windows.Forms.ListBox();
-            this.lblHeader = new System.Windows.Forms.Label();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.lblFilterByLocation = new System.Windows.Forms.Label();
-
-            this.SuspendLayout();
-
-
-            // panelHeader, designing and styling of the panel header, including positioning
-            this.panelHeader.BackColor = Color.FromArgb(33, 150, 243);
-            this.panelHeader.Controls.Add(this.lblHeader);
-            this.panelHeader.Dock = DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(800, 100);
-
-
-            // lblHeader, designing and styling of the label header, including positioning
-            this.lblHeader.AutoSize = true;
-            this.lblHeader.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            this.lblHeader.ForeColor = Color.White;
-            this.lblHeader.Location = new Point(150, 20);
-            this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new Size(450, 45);
-            this.lblHeader.Text = "Issues Reported";
-            this.lblHeader.TextAlign = ContentAlignment.MiddleCenter;
-
-
-            // txtFilterLocation, designing and styling of the textbox, including positioning
-            this.txtFilterLocation.Location = new System.Drawing.Point(275, 140);
-            this.txtFilterLocation.Name = "txtFilterLocation";
-            this.txtFilterLocation.Size = new System.Drawing.Size(250, 30);
-            this.txtFilterLocation.TabIndex = 0;
-            this.txtFilterLocation.Font = new Font("Segoe UI", 12F);
-            this.txtFilterLocation.Text = "Enter location to filter...";
-
-            // btnFilter, designing and styling of the filter button, including positioning
-            this.btnFilter.Location = new System.Drawing.Point(275, 180);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(250, 40);
-            this.btnFilter.TabIndex = 1;
-            this.btnFilter.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            this.btnFilter.Text = "Filter Issues By Location";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-
-            // lstIssues, designing and styling of the listbox, including positioning
-            this.lstIssues.FormattingEnabled = true;
-            this.lstIssues.Location = new System.Drawing.Point(100, 230);
-            this.lstIssues.Name = "lstIssues";
-            this.lstIssues.Size = new System.Drawing.Size(600, 200);
-            this.lstIssues.Font = new Font("Segoe UI", 12F);
-            this.lstIssues.TabIndex = 2;
-
-
-            // btnBackToMainMenu, designing and styling of the back to menu button, including positioning
-            this.btnBackToMainMenu.Location = new System.Drawing.Point(275, 450);
-            this.btnBackToMainMenu.Name = "btnBackToMainMenu";
-            this.btnBackToMainMenu.Size = new System.Drawing.Size(250, 40);
-            this.btnBackToMainMenu.TabIndex = 3;
-            this.btnBackToMainMenu.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            this.btnBackToMainMenu.Text = "Back to Main Menu";
-            this.btnBackToMainMenu.UseVisualStyleBackColor = true;
-            this.btnBackToMainMenu.Click += new System.EventHandler(this.btnBackToMainMenu_Click);
-
-            // btnReportIssue, designing and styling of the report issue button, including positioning
-            this.btnReportIssue.Location = new System.Drawing.Point(275, 500);
-            this.btnReportIssue.Name = "btnReportIssue";
-            this.btnReportIssue.Size = new System.Drawing.Size(250, 40);
-            this.btnReportIssue.TabIndex = 4;
-            this.btnReportIssue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            this.btnReportIssue.Text = "Report Issue";
-            this.btnReportIssue.UseVisualStyleBackColor = true;
-            this.btnReportIssue.Click += new System.EventHandler(this.btnReportIssue_Click);
-
-            // ViewIssuesForm, designing and styling of the issue forms, including positioning
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.BackColor = Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.panelHeader);
-            this.Controls.Add(this.lblFilterByLocation);
-            this.Controls.Add(this.txtFilterLocation);
-            this.Controls.Add(this.btnFilter);
-            this.Controls.Add(this.lstIssues);
-            this.Controls.Add(this.btnBackToMainMenu);
-            this.Controls.Add(this.btnReportIssue);
-            this.Name = "ViewIssuesForm";
-            this.Text = "View Reported Issues";
-            this.Load += new System.EventHandler(this.ViewIssuesForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            txtFilterLocation = new TextBox();
+            btnFilter = new Button();
+            btnBackToMainMenu = new Button();
+            btnReportIssue = new Button();
+            lstIssues = new ListBox();
+            lblHeader = new Label();
+            panelHeader = new Panel();
+            lblFilterByLocation = new Label();
+            lblFilterLocation = new Label();
+            panelHeader.SuspendLayout();
+            SuspendLayout();
+            // 
+            // txtFilterLocation
+            // 
+            txtFilterLocation.Font = new Font("Segoe UI", 12F);
+            txtFilterLocation.Location = new Point(321, 162);
+            txtFilterLocation.Margin = new Padding(4, 3, 4, 3);
+            txtFilterLocation.Name = "txtFilterLocation";
+            txtFilterLocation.PlaceholderText = "Enter location to filter...";
+            txtFilterLocation.Size = new Size(291, 29);
+            txtFilterLocation.TabIndex = 0;
+            // 
+            // btnFilter
+            // 
+            btnFilter.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnFilter.Location = new Point(321, 208);
+            btnFilter.Margin = new Padding(4, 3, 4, 3);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new Size(292, 46);
+            btnFilter.TabIndex = 1;
+            btnFilter.Text = "Filter Issues By Location";
+            btnFilter.UseVisualStyleBackColor = true;
+            btnFilter.Click += btnFilter_Click;
+            // 
+            // btnBackToMainMenu
+            // 
+            btnBackToMainMenu.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnBackToMainMenu.Location = new Point(321, 519);
+            btnBackToMainMenu.Margin = new Padding(4, 3, 4, 3);
+            btnBackToMainMenu.Name = "btnBackToMainMenu";
+            btnBackToMainMenu.Size = new Size(292, 46);
+            btnBackToMainMenu.TabIndex = 3;
+            btnBackToMainMenu.Text = "Back to Main Menu";
+            btnBackToMainMenu.UseVisualStyleBackColor = true;
+            btnBackToMainMenu.Click += btnBackToMainMenu_Click;
+            // 
+            // btnReportIssue
+            // 
+            btnReportIssue.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnReportIssue.Location = new Point(321, 577);
+            btnReportIssue.Margin = new Padding(4, 3, 4, 3);
+            btnReportIssue.Name = "btnReportIssue";
+            btnReportIssue.Size = new Size(292, 46);
+            btnReportIssue.TabIndex = 4;
+            btnReportIssue.Text = "Report Issue";
+            btnReportIssue.UseVisualStyleBackColor = true;
+            btnReportIssue.Click += btnReportIssue_Click;
+            // 
+            // lstIssues
+            // 
+            lstIssues.Font = new Font("Segoe UI", 12F);
+            lstIssues.FormattingEnabled = true;
+            lstIssues.ItemHeight = 21;
+            lstIssues.Location = new Point(117, 265);
+            lstIssues.Margin = new Padding(4, 3, 4, 3);
+            lstIssues.Name = "lstIssues";
+            lstIssues.Size = new Size(699, 214);
+            lstIssues.TabIndex = 2;
+            // 
+            // lblHeader
+            // 
+            lblHeader.AutoSize = true;
+            lblHeader.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            lblHeader.ForeColor = Color.White;
+            lblHeader.Location = new Point(175, 23);
+            lblHeader.Margin = new Padding(4, 0, 4, 0);
+            lblHeader.Name = "lblHeader";
+            lblHeader.Size = new Size(257, 45);
+            lblHeader.TabIndex = 0;
+            lblHeader.Text = "Issues Reported";
+            lblHeader.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panelHeader
+            // 
+            panelHeader.BackColor = Color.FromArgb(33, 150, 243);
+            panelHeader.Controls.Add(lblHeader);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Margin = new Padding(4, 3, 4, 3);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(933, 115);
+            panelHeader.TabIndex = 1;
+            // 
+            // lblFilterByLocation
+            // 
+            lblFilterByLocation.Location = new Point(0, 0);
+            lblFilterByLocation.Margin = new Padding(4, 0, 4, 0);
+            lblFilterByLocation.Name = "lblFilterByLocation";
+            lblFilterByLocation.Size = new Size(117, 27);
+            lblFilterByLocation.TabIndex = 2;
+            // 
+            // lblFilterLocation
+            // 
+            lblFilterLocation.Font = new Font("Segoe UI", 12F);
+            lblFilterLocation.Location = new Point(394, 130);
+            lblFilterLocation.Margin = new Padding(4, 0, 4, 0);
+            lblFilterLocation.Name = "lblFilterLocation";
+            lblFilterLocation.Size = new Size(292, 29);
+            lblFilterLocation.TabIndex = 0;
+            lblFilterLocation.Text = "Enter Location:";
+            lblFilterLocation.Click += lblFilterLocation_Click;
+            // 
+            // ViewIssuesForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(933, 692);
+            Controls.Add(lblFilterLocation);
+            Controls.Add(panelHeader);
+            Controls.Add(lblFilterByLocation);
+            Controls.Add(txtFilterLocation);
+            Controls.Add(btnFilter);
+            Controls.Add(lstIssues);
+            Controls.Add(btnBackToMainMenu);
+            Controls.Add(btnReportIssue);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "ViewIssuesForm";
+            Text = "View Reported Issues";
+            Load += ViewIssuesForm_Load;
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
+
+        private Label lblFilterLocation;
     }
 }

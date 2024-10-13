@@ -21,10 +21,10 @@ namespace MunicipalServicesApp
         {
             int centerX = this.ClientSize.Width / 2;
 
-            btnReportIssues.Left = centerX - (btnReportIssues.Width / 2);
-            btnLocalEvents.Left = centerX - (btnLocalEvents.Width / 2);
-            btnServiceRequestStatus.Left = centerX - (btnServiceRequestStatus.Width / 2);
-            btnSettings.Left = centerX - (btnSettings.Width / 2);
+            btnReportIssues.Left = centerX - (btnReportIssues.Width / 6);
+            btnLocalEvents.Left = centerX - (btnLocalEvents.Width / 6);
+            btnServiceRequestStatus.Left = centerX - (btnServiceRequestStatus.Width / 6);
+            btnSettings.Left = centerX - (btnSettings.Width / 6);
         }
 
         private void btnReportIssues_Click(object sender, EventArgs e)
