@@ -7,21 +7,23 @@ namespace MunicipalServicesApp
 {
     public partial class ReportIssuesForm : Form
     {
+        // Static list to store all reported issues
         private static List<Issue> reportedIssues = new List<Issue>();
 
         public ReportIssuesForm()
         {
             InitializeComponent();
             this.Resize += new EventHandler(Form_Resize);
-            StyleControls();
+            StyleControls(); // Apply styling to controls
         }
 
+        // Method to style controls on the form
         private void StyleControls()
         {
-            // Set form background color
+            // Sets form background color
             this.BackColor = Color.White;
 
-            // Style labels
+            // Styles labels
             foreach (Control c in this.Controls)
             {
                 if (c is Label && c != lblHeader)
@@ -31,13 +33,13 @@ namespace MunicipalServicesApp
                 }
             }
 
-            // Style text inputs
+            // Styles text inputs
             txtLocation.Font = new Font("Segoe UI", 11F);
             txtDescription.Font = new Font("Segoe UI", 11F);
             txtAttachment.Font = new Font("Segoe UI", 11F);
             cmbCategory.Font = new Font("Segoe UI", 11F);
 
-            // Style buttons
+            // Styles buttons
             StyleButton(btnSaveLocation);
             StyleButton(btnSaveDescription);
             StyleButton(btnAttachMedia);
@@ -45,11 +47,12 @@ namespace MunicipalServicesApp
             StyleButton(btnViewIssues);
             StyleButton(btnBackToMenu);
 
-            // Style progress bar
+            // Styles progress bar
             progressBar.Style = ProgressBarStyle.Continuous;
             progressBar.Height = 25;
         }
 
+        // Helper method to style buttons uniformly
         private void StyleButton(Button btn)
         {
             btn.FlatStyle = FlatStyle.Flat;
@@ -61,17 +64,20 @@ namespace MunicipalServicesApp
             btn.Padding = new Padding(5);
         }
 
+        // Event handler for form resizing
         private void Form_Resize(object sender, EventArgs e)
         {
-            CenterControls();
+            CenterControls(); // Center controls when form is resized
         }
 
+        // Method to center controls dynamically on the form
         private void CenterControls()
         {
             int centerX = this.ClientSize.Width / 2;
             int currentY = panelHeader.Bottom + 20;
             int padding = 10;
 
+            // Center individual controls vertically with spacing
             CenterControl(lblLocation, centerX, ref currentY, padding);
             CenterControl(txtLocation, centerX, ref currentY, padding);
             CenterControl(btnSaveLocation, centerX, ref currentY, padding);
@@ -104,6 +110,7 @@ namespace MunicipalServicesApp
             btnBackToMenu.Location = new Point(btnViewIssues.Right + 20, currentY);
         }
 
+        // Helper method to center a single control on the form
         private void CenterControl(Control ctrl, int centerX, ref int currentY, int padding)
         {
             ctrl.Left = centerX - ctrl.Width / 2;
@@ -111,6 +118,7 @@ namespace MunicipalServicesApp
             currentY += ctrl.Height + padding;
         }
 
+        // Saves location button click event
         private void btnSaveLocation_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtLocation.Text))
@@ -118,10 +126,11 @@ namespace MunicipalServicesApp
                 MessageBox.Show("Please enter a location.");
                 return;
             }
-            progressBar.Value = 20;
+            progressBar.Value = 20;  // Updates progress bar
             progressBar.ForeColor = Color.Orange;
         }
 
+        // Save description button click event
         private void btnSaveDescription_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtDescription.Text))
@@ -129,30 +138,33 @@ namespace MunicipalServicesApp
                 MessageBox.Show("Please enter a description.");
                 return;
             }
-            progressBar.Value = 60;
+            progressBar.Value = 60;  // Updates progress bar
             progressBar.ForeColor = Color.Yellow;
         }
 
+        // Category selection change event
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            progressBar.Value = 40;
+            progressBar.Value = 40;  // Updates progress bar
             progressBar.ForeColor = Color.Green;
         }
 
+        // Attach media button click event
         private void btnAttachMedia_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*"; // File types filter
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    txtAttachment.Text = openFileDialog.FileName;
+                    txtAttachment.Text = openFileDialog.FileName; // Show selected file path in textbox
                     progressBar.Value = 80;
                     progressBar.ForeColor = Color.Blue;
                 }
             }
         }
 
+        // Submit button click event
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtLocation.Text) &&
@@ -160,6 +172,7 @@ namespace MunicipalServicesApp
                 cmbCategory.SelectedItem != null &&
                 !string.IsNullOrWhiteSpace(txtAttachment.Text))
             {
+                // Create a new issue and add it to the list
                 Issue newIssue = new Issue
                 {
                     Location = txtLocation.Text,
@@ -168,14 +181,14 @@ namespace MunicipalServicesApp
                     Attachment = txtAttachment.Text
                 };
 
-                reportedIssues.Add(newIssue);
+                reportedIssues.Add(newIssue); // Add new issue to list
                 progressBar.Value = 100;
 
                 DialogResult result = MessageBox.Show("Issue has been submitted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (result == DialogResult.OK)
                 {
-                    ResetForm();
+                    ResetForm(); // Reset form after successful submission
                 }
             }
             else
@@ -184,6 +197,7 @@ namespace MunicipalServicesApp
             }
         }
 
+        // Reset the form inputs and progress bar
         private void ResetForm()
         {
             txtLocation.Clear();
@@ -193,9 +207,10 @@ namespace MunicipalServicesApp
             progressBar.Value = 0;
         }
 
+        // View issues button click event
         private void btnViewIssues_Click(object sender, EventArgs e)
         {
-            OpenNewForm(new ViewIssuesForm(reportedIssues));
+            OpenNewForm(new ViewIssuesForm(reportedIssues)); // Opens the ViewIssuesForm
         }
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
@@ -203,6 +218,7 @@ namespace MunicipalServicesApp
             OpenNewForm(new MainForm());
         }
 
+        // Open a new form and close the current one
         private void OpenNewForm(Form newForm)
         {
             newForm.FormClosed += (s, args) => this.Close();
@@ -215,6 +231,7 @@ namespace MunicipalServicesApp
             //this.WindowState = FormWindowState.Maximized;
         }
 
+        // Handle form closing event to ensure application closes properly
         private void ReportIssuesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Application.OpenForms.Count == 1)
@@ -225,7 +242,7 @@ namespace MunicipalServicesApp
 
         private void lblEngagement_Click(object sender, EventArgs e)
         {
-            // This method can remain empty if no functionality is needed
+            
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
 using System;
-
 namespace MunicipalServicesApp
 {
     partial class LocalEventsForm
@@ -34,6 +33,8 @@ namespace MunicipalServicesApp
             panelHeader = new Panel();
             labelHeader = new Label();
             labelEventName = new Label();
+            labelEventDetails = new Label();
+            labelRecommendations = new Label();
             panelHeader.SuspendLayout();
             SuspendLayout();
             // 
@@ -98,7 +99,7 @@ namespace MunicipalServicesApp
             // 
             // textBoxEventDetails
             // 
-            textBoxEventDetails.Location = new Point(47, 507);
+            textBoxEventDetails.Location = new Point(47, 527);
             textBoxEventDetails.Multiline = true;
             textBoxEventDetails.Name = "textBoxEventDetails";
             textBoxEventDetails.ReadOnly = true;
@@ -109,14 +110,14 @@ namespace MunicipalServicesApp
             // 
             listBoxRecommendations.FormattingEnabled = true;
             listBoxRecommendations.ItemHeight = 17;
-            listBoxRecommendations.Location = new Point(47, 617);
+            listBoxRecommendations.Location = new Point(47, 657);
             listBoxRecommendations.Name = "listBoxRecommendations";
             listBoxRecommendations.Size = new Size(600, 123);
             listBoxRecommendations.TabIndex = 6;
             // 
             // buttonCreateEvent
             // 
-            buttonCreateEvent.Location = new Point(173, 780);
+            buttonCreateEvent.Location = new Point(173, 800);
             buttonCreateEvent.Name = "buttonCreateEvent";
             buttonCreateEvent.Size = new Size(150, 40);
             buttonCreateEvent.TabIndex = 7;
@@ -126,7 +127,7 @@ namespace MunicipalServicesApp
             // 
             // btnBackToMainMenu
             // 
-            btnBackToMainMenu.Location = new Point(333, 780);
+            btnBackToMainMenu.Location = new Point(333, 800);
             btnBackToMainMenu.Name = "btnBackToMainMenu";
             btnBackToMainMenu.Size = new Size(150, 40);
             btnBackToMainMenu.TabIndex = 8;
@@ -164,11 +165,31 @@ namespace MunicipalServicesApp
             labelEventName.TabIndex = 10;
             labelEventName.Text = "Name of Event:";
             // 
+            // labelEventDetails
+            // 
+            labelEventDetails.AutoSize = true;
+            labelEventDetails.Location = new Point(47, 505);
+            labelEventDetails.Name = "labelEventDetails";
+            labelEventDetails.Size = new Size(89, 19);
+            labelEventDetails.TabIndex = 11;
+            labelEventDetails.Text = "Event Details:";
+            // 
+            // labelRecommendations
+            // 
+            labelRecommendations.AutoSize = true;
+            labelRecommendations.Location = new Point(47, 635);
+            labelRecommendations.Name = "labelRecommendations";
+            labelRecommendations.Size = new Size(124, 19);
+            labelRecommendations.TabIndex = 12;
+            labelRecommendations.Text = "Recommendations:";
+            // 
             // LocalEventsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 832);
+            ClientSize = new Size(800, 852);
+            Controls.Add(labelRecommendations);
+            Controls.Add(labelEventDetails);
             Controls.Add(labelEventName);
             Controls.Add(panelHeader);
             Controls.Add(btnBackToMainMenu);
@@ -205,5 +226,7 @@ namespace MunicipalServicesApp
         private Panel panelHeader;
         private Label labelHeader;
         private Label labelEventName;
+        private Label labelEventDetails;
+        private Label labelRecommendations;
     }
 }
