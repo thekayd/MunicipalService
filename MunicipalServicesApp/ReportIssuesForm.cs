@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MunicipalServicesApp
 {
@@ -10,11 +11,14 @@ namespace MunicipalServicesApp
         // Static list to store all reported issues
         private static List<Issue> reportedIssues = new List<Issue>();
 
+        // Static field to store the path of the uploaded files
+        private static string uploadFolderPath = Path.Combine(Application.StartupPath, "Uploads");
+
         public ReportIssuesForm()
         {
             InitializeComponent();
             this.Resize += new EventHandler(Form_Resize);
-            StyleControls(); // Apply styling to controls
+            StyleControls();
         }
 
         // Method to style controls on the form
@@ -67,7 +71,7 @@ namespace MunicipalServicesApp
         // Event handler for form resizing
         private void Form_Resize(object sender, EventArgs e)
         {
-            CenterControls(); // Center controls when form is resized
+            CenterControls();
         }
 
         // Method to center controls dynamically on the form
@@ -99,11 +103,11 @@ namespace MunicipalServicesApp
             CenterControl(progressBar, centerX, ref currentY, padding);
 
             // Position View Issues and Back to Menu buttons side by side
-            int buttonWidth = Math.Min(200, (this.ClientSize.Width - 60) / 2); // Set max width to 200
+            int buttonWidth = Math.Min(200, (this.ClientSize.Width - 60) / 2);
             btnViewIssues.Width = buttonWidth;
             btnBackToMenu.Width = buttonWidth;
 
-            int totalButtonsWidth = buttonWidth * 2 + 20; // 20 is the space between buttons
+            int totalButtonsWidth = buttonWidth * 2 + 20;
             int startX = (this.ClientSize.Width - totalButtonsWidth) / 2;
 
             btnViewIssues.Location = new Point(startX, currentY);
@@ -126,7 +130,7 @@ namespace MunicipalServicesApp
                 MessageBox.Show("Please enter a location.");
                 return;
             }
-            progressBar.Value = 20;  // Updates progress bar
+            progressBar.Value = 20;
             progressBar.ForeColor = Color.Orange;
         }
 
@@ -138,14 +142,14 @@ namespace MunicipalServicesApp
                 MessageBox.Show("Please enter a description.");
                 return;
             }
-            progressBar.Value = 60;  // Updates progress bar
+            progressBar.Value = 60;
             progressBar.ForeColor = Color.Yellow;
         }
 
         // Category selection change event
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            progressBar.Value = 40;  // Updates progress bar
+            progressBar.Value = 40;
             progressBar.ForeColor = Color.Green;
         }
 
@@ -154,12 +158,29 @@ namespace MunicipalServicesApp
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*"; // File types filter
+                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    txtAttachment.Text = openFileDialog.FileName; // Show selected file path in textbox
-                    progressBar.Value = 80;
-                    progressBar.ForeColor = Color.Blue;
+                    string sourceFilePath = openFileDialog.FileName;
+                    string fileName = Path.GetFileName(sourceFilePath);
+                    string destinationFilePath = Path.Combine(uploadFolderPath, fileName);
+
+                    try
+                    {
+                        // Create the Uploads folder if it doesn't exist
+                        Directory.CreateDirectory(uploadFolderPath);
+
+                        // Copy the file to the Uploads folder
+                        File.Copy(sourceFilePath, destinationFilePath, true);
+
+                        txtAttachment.Text = destinationFilePath;
+                        progressBar.Value = 80;
+                        progressBar.ForeColor = Color.Blue;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error copying file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -178,17 +199,17 @@ namespace MunicipalServicesApp
                     Location = txtLocation.Text,
                     Category = cmbCategory.SelectedItem.ToString(),
                     Description = txtDescription.Text,
-                    Attachment = txtAttachment.Text
+                    Attachment = txtAttachment.Text // This now contains the path in the Uploads folder
                 };
 
-                reportedIssues.Add(newIssue); // Add new issue to list
+                reportedIssues.Add(newIssue);
                 progressBar.Value = 100;
 
                 DialogResult result = MessageBox.Show("Issue has been submitted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (result == DialogResult.OK)
                 {
-                    ResetForm(); // Reset form after successful submission
+                    ResetForm();
                 }
             }
             else
@@ -210,7 +231,7 @@ namespace MunicipalServicesApp
         // View issues button click event
         private void btnViewIssues_Click(object sender, EventArgs e)
         {
-            OpenNewForm(new ViewIssuesForm(reportedIssues)); // Opens the ViewIssuesForm
+            OpenNewForm(new ViewIssuesForm(reportedIssues));
         }
 
         private void btnBackToMenu_Click(object sender, EventArgs e)
@@ -242,7 +263,7 @@ namespace MunicipalServicesApp
 
         private void lblEngagement_Click(object sender, EventArgs e)
         {
-            
+            // This method is empty in the original code
         }
     }
 }
