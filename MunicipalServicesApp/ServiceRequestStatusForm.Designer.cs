@@ -12,6 +12,8 @@ namespace MunicipalServicesApp
         private Button btnSearch;
         private Button btnAddRequest;
         private ComboBox cmbSort;
+        private Button btnBackToMenu;
+        private Button btnViewDetails;
 
         protected override void Dispose(bool disposing)
         {
@@ -65,13 +67,29 @@ namespace MunicipalServicesApp
             this.cmbSort.Items.AddRange(new string[] { "Priority", "Date", "Status" });
             this.cmbSort.SelectedIndexChanged += CmbSort_SelectedIndexChanged;
 
+            // Initialize Back to Menu Button
+            this.btnBackToMenu = new Button();
+            this.btnBackToMenu.Location = new Point(540, 20);
+            this.btnBackToMenu.Size = new Size(150, 23);
+            this.btnBackToMenu.Text = "Back to Menu";
+            this.btnBackToMenu.Click += BtnBackToMenu_Click;
+
+            // Initialize View Details Button
+            this.btnViewDetails = new Button();
+            this.btnViewDetails.Location = new Point(540, 50);  // Position under Back to Menu button
+            this.btnViewDetails.Size = new Size(150, 23);
+            this.btnViewDetails.Text = "View Details";
+            this.btnViewDetails.Click += BtnViewDetails_Click;
+
             // Add controls to form
             this.Controls.AddRange(new Control[] {
                 this.listViewRequests,
                 this.txtSearchId,
                 this.btnSearch,
                 this.btnAddRequest,
-                this.cmbSort
+                this.cmbSort,
+                this.btnBackToMenu,
+                this.btnViewDetails
             });
         }
     }

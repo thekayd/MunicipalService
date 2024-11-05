@@ -23,7 +23,8 @@ namespace MunicipalServicesApp
         {
             this.components = new System.ComponentModel.Container();
 
-            this.Text = $"Request Details - {request.Id}";
+            // Set the form title outside InitializeComponent
+            this.Text = "Request Details - " + request.Id;
             this.Size = new Size(600, 500);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.StartPosition = FormStartPosition.CenterParent;

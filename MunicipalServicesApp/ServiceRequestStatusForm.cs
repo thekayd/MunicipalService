@@ -121,5 +121,37 @@ namespace MunicipalServicesApp
                 UpdateListView(request);
             }
         }
+        private void BtnBackToMenu_Click(object sender, EventArgs e)
+        {
+            this.Close();  // Closes the current form and returns to the main menu
+        }
+        private void BtnViewDetails_Click(object sender, EventArgs e)
+        {
+            if (listViewRequests.SelectedItems.Count > 0)
+            {
+                // Get the ID of the selected request from the ListView
+                string selectedRequestId = listViewRequests.SelectedItems[0].Text;
+
+                // Find the request using the BST in serviceManager
+                var selectedRequest = serviceManager.FindRequestBST(selectedRequestId);
+
+                if (selectedRequest != null)
+                {
+                    // Open the RequestDetailsForm with the selected request
+                    var detailsForm = new RequestDetailsForm(selectedRequest, serviceManager);
+                    detailsForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Service request not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a service request to view details.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
     }
 }
