@@ -65,7 +65,7 @@ namespace MunicipalServicesApp
         // Event handler for the "Service Request Status" button click, displays a message
         private void btnServiceRequestStatus_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature will be implemented later!", "Feature Not Available", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            OpenNewForm(new ServiceRequestStatusForm());
         }
 
         // Event handler for the "Settings" button click, opens the SettingsForm

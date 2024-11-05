@@ -26,3 +26,6 @@ C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug
 C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\net8.0-windows\images\GoldenStar.jpg
 C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\net8.0-windows\images\SettingsImage.jpg
 C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\bin\Debug\net8.0-windows\images\ReviewStarImage.jpg
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.AddRequestForm.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.RequestDetailsForm.resources
+C:\Users\Kay-Daniel\Source\Repos\MunicipalService\MunicipalServicesApp\obj\Debug\net8.0-windows\MunicipalServicesApp.ServiceRequestStatusForm.resources
