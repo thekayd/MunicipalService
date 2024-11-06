@@ -143,12 +143,12 @@ namespace MunicipalServicesApp
                 }
                 else
                 {
-                    MessageBox.Show("Service request not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Service request ID not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Please select a service request to view details.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select a service request ID from list to view details.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

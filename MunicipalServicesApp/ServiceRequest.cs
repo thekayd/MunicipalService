@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
+using System.IO;
 
 namespace MunicipalServicesApp
 {
@@ -46,11 +47,28 @@ namespace MunicipalServicesApp
         private TreeNode<ServiceRequest> rbRoot;
         private List<ServiceRequest> heap;
         private Dictionary<string, List<string>> serviceGraph;
+        private Dictionary<string, List<(string, int)>> weightedGraph = new Dictionary<string, List<(string, int)>>();
 
         public ServiceManager()
         {
             heap = new List<ServiceRequest>();
             serviceGraph = new Dictionary<string, List<string>>();
+
+            // Initialize sample graph connections
+            InitializeGraph();
+
+            // Run the graph operations immediately
+            RunGraphOperations();
+        }
+
+        private void InitializeGraph()
+        {
+            // Sample connections for MST and BFS testing
+            AddWeightedGraphConnection("SR001", "SR002", 4);
+            AddWeightedGraphConnection("SR002", "SR003", 6);
+            AddWeightedGraphConnection("SR003", "SR004", 5);
+            AddWeightedGraphConnection("SR001", "SR004", 10);
+            AddWeightedGraphConnection("SR002", "SR004", 2);
         }
 
         // BST Operations
@@ -295,6 +313,113 @@ namespace MunicipalServicesApp
                 InorderTraversal(node.Right, result);
             }
         }
+
+        public void AddWeightedGraphConnection(string requestId, string relatedRequestId, int weight)
+        {
+            if (!weightedGraph.ContainsKey(requestId))
+                weightedGraph[requestId] = new List<(string, int)>();
+            weightedGraph[requestId].Add((relatedRequestId, weight));
+
+            if (!weightedGraph.ContainsKey(relatedRequestId))
+                weightedGraph[relatedRequestId] = new List<(string, int)>();
+            weightedGraph[relatedRequestId].Add((requestId, weight)); // Undirected graph
+        }
+
+        // Graph Traversal (BFS)
+        public List<string> BFS(string startId)
+        {
+            var visited = new HashSet<string>();
+            var queue = new Queue<string>();
+            var result = new List<string>();
+
+            queue.Enqueue(startId);
+            visited.Add(startId);
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                result.Add(current);
+
+                if (serviceGraph.ContainsKey(current))
+                {
+                    foreach (var neighbor in serviceGraph[current])
+                    {
+                        if (!visited.Contains(neighbor))
+                        {
+                            visited.Add(neighbor);
+                            queue.Enqueue(neighbor);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        // Minimum Spanning Tree using Prim's Algorithm
+        public List<(string, string, int)> GetMinimumSpanningTree()
+        {
+            var mstEdges = new List<(string, string, int)>();
+            var visited = new HashSet<string>();
+            var priorityQueue = new SortedSet<(int weight, string from, string to)>();
+
+            // Start with an arbitrary node
+            string startNode = weightedGraph.Keys.First();
+            visited.Add(startNode);
+
+            foreach (var (neighbor, weight) in weightedGraph[startNode])
+                priorityQueue.Add((weight, startNode, neighbor));
+
+            while (priorityQueue.Count > 0 && visited.Count < weightedGraph.Count)
+            {
+                var (weight, from, to) = priorityQueue.Min;
+                priorityQueue.Remove(priorityQueue.Min);
+
+                if (visited.Contains(to)) continue;
+
+                visited.Add(to);
+                mstEdges.Add((from, to, weight));
+
+                foreach (var (nextNeighbor, nextWeight) in weightedGraph[to])
+                {
+                    if (!visited.Contains(nextNeighbor))
+                        priorityQueue.Add((nextWeight, to, nextNeighbor));
+                }
+            }
+
+            return mstEdges;
+        }
+
+        // Logging Method
+        private void LogToFile(string message)
+        {
+            using (var writer = new StreamWriter("graph_operations_log.txt", true))
+            {
+                writer.WriteLine(message);
+            }
+        }
+
+        // Graph Operations Runner Method
+        public void RunGraphOperations()
+        {
+            // Log BFS traversal result
+            string startNode = "SR001"; // Example start node
+            var bfsResult = BFS(startNode);
+            LogToFile("BFS Traversal from " + startNode + ":");
+            bfsResult.ForEach(id => LogToFile(id));
+
+            LogToFile(""); // Add a blank line for readability
+
+            // Log Minimum Spanning Tree result
+            var mstResult = GetMinimumSpanningTree();
+            LogToFile("Minimum Spanning Tree:");
+            foreach (var (from, to, weight) in mstResult)
+            {
+                LogToFile($"{from} - {to} : {weight}");
+            }
+
+            LogToFile("=================================="); // Separator for each run
+        }
     }
 }
+
 
