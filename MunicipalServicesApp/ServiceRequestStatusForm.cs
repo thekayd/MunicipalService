@@ -21,9 +21,12 @@ namespace MunicipalServicesApp
             // Add some test data
             var requests = new List<ServiceRequest>
             {
-                new ServiceRequest { Id = "SR001", Description = "Road repair", Status = "In Progress", Priority = 1, Category = "Infrastructure", CreatedDate = DateTime.Now.AddDays(-5) },
-                new ServiceRequest { Id = "SR002", Description = "Street light repair", Status = "Pending", Priority = 2, Category = "Maintenance", CreatedDate = DateTime.Now.AddDays(-3) },
-                new ServiceRequest { Id = "SR003", Description = "Garbage collection", Status = "Completed", Priority = 3, Category = "Sanitation", CreatedDate = DateTime.Now.AddDays(-1) }
+               new ServiceRequest { Id = "SR001", Description = "Road repair", Status = "In Progress", Priority = 1, Category = "Infrastructure", Location = "Main St", CreatedDate = DateTime.Now.AddDays(-5) },
+               new ServiceRequest { Id = "SR002", Description = "Street light repair", Status = "Pending", Priority = 2, Category = "Maintenance", Location = "2nd Ave", CreatedDate = DateTime.Now.AddDays(-3) },
+               new ServiceRequest { Id = "SR003", Description = "Garbage collection", Status = "Completed", Priority = 3, Category = "Sanitation", Location = "Parkside", CreatedDate = DateTime.Now.AddDays(-1) },
+               new ServiceRequest { Id = "SR004", Description = "Water leak repair", Status = "In Progress", Priority = 2, Category = "Utilities", Location = "5th St", CreatedDate = DateTime.Now.AddDays(-7) },
+               new ServiceRequest { Id = "SR005", Description = "Public park cleanup", Status = "Pending", Priority = 1, Category = "Sanitation", Location = "Central Park", CreatedDate = DateTime.Now.AddDays(-2) }
+
             };
 
             foreach (var request in requests)
@@ -35,9 +38,14 @@ namespace MunicipalServicesApp
                 UpdateListView(request);
             }
 
-            // Add some test relationships
+            // Graph relationships
             serviceManager.AddGraphConnection("SR001", "SR002");
-            serviceManager.AddGraphConnection("SR002", "SR003");
+            serviceManager.AddGraphConnection("SR001", "SR004");
+            serviceManager.AddGraphConnection("SR002", "SR001");
+            serviceManager.AddGraphConnection("SR002", "SR004");
+            serviceManager.AddGraphConnection("SR003", "SR005");
+            serviceManager.AddGraphConnection("SR004", "SR001");
+            serviceManager.AddGraphConnection("SR004", "SR002");
         }
 
         private void UpdateListView(ServiceRequest request)
