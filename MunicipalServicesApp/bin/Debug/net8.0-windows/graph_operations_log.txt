@@ -14,3 +14,35 @@ SR001 - SR002 : 4
 SR002 - SR004 : 2
 SR004 - SR003 : 5
 ==================================
+BFS Traversal from SR001:
+SR001
+
+Minimum Spanning Tree:
+SR001 - SR002 : 4
+SR002 - SR004 : 2
+SR004 - SR003 : 5
+==================================
+BFS Traversal from SR001:
+SR001
+
+Minimum Spanning Tree:
+SR001 - SR002 : 4
+SR002 - SR004 : 2
+SR004 - SR003 : 5
+==================================
+BFS Traversal from SR001:
+SR001
+
+Minimum Spanning Tree:
+SR001 - SR002 : 4
+SR002 - SR004 : 2
+SR004 - SR003 : 5
+==================================
+BFS Traversal from SR001:
+SR001
+
+Minimum Spanning Tree:
+SR001 - SR002 : 4
+SR002 - SR004 : 2
+SR004 - SR003 : 5
+==================================

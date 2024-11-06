@@ -48,6 +48,7 @@ namespace MunicipalServicesApp
         private List<ServiceRequest> heap;
         private Dictionary<string, List<string>> serviceGraph;
         private Dictionary<string, List<(string, int)>> weightedGraph = new Dictionary<string, List<(string, int)>>();
+        private static int lastRequestId = 005;
 
         public ServiceManager()
         {
@@ -59,6 +60,13 @@ namespace MunicipalServicesApp
 
             // Run the graph operations immediately
             RunGraphOperations();
+        }
+
+        // Method to generate a new unique ID
+        public static string GenerateNextRequestId()
+        {
+            lastRequestId++;
+            return $"SR{lastRequestId:D3}";
         }
 
         private void InitializeGraph()

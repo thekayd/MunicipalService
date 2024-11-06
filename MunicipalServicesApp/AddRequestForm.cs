@@ -60,7 +60,7 @@ namespace MunicipalServicesApp
         {
             return new ServiceRequest
             {
-                Id = GenerateRequestId(),
+                Id = ServiceManager.GenerateNextRequestId(), // Use the new ID generator
                 Description = txtDescription.Text,
                 Category = cmbCategory.SelectedItem.ToString(),
                 Priority = cmbPriority.SelectedIndex + 1,
@@ -70,9 +70,6 @@ namespace MunicipalServicesApp
             };
         }
 
-        private string GenerateRequestId()
-        {
-            return $"SR{DateTime.Now:yyyyMMddHHmmss}";
-        }
+      
     }
 }
