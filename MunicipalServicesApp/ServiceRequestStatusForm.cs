@@ -46,6 +46,7 @@ namespace MunicipalServicesApp
             serviceManager.AddGraphConnection("SR003", "SR005");
             serviceManager.AddGraphConnection("SR004", "SR001");
             serviceManager.AddGraphConnection("SR004", "SR002");
+            serviceManager.AddGraphConnection("SR005", "SR003");
         }
 
         private void UpdateListView(ServiceRequest request)
@@ -57,6 +58,21 @@ namespace MunicipalServicesApp
             item.SubItems.Add(request.Category);
             item.SubItems.Add(request.CreatedDate.ToString("yyyy-MM-dd HH:mm"));
             listViewRequests.Items.Add(item);
+        }
+
+        private void UpdateRelatedListView(List<ServiceRequest> relatedRequests)
+        {
+            listViewRelatedRequests.Items.Clear();
+            foreach (var request in relatedRequests)
+            {
+                var item = new ListViewItem(request.Id);
+                item.SubItems.Add(request.Description);
+                item.SubItems.Add(request.Status);
+                item.SubItems.Add(request.Priority.ToString());
+                item.SubItems.Add(request.Category);
+                item.SubItems.Add(request.CreatedDate.ToString("yyyy-MM-dd HH:mm"));
+                listViewRelatedRequests.Items.Add(item);
+            }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -74,14 +90,19 @@ namespace MunicipalServicesApp
                 listViewRequests.Items.Clear();
                 UpdateListView(request);
 
-                // Show related requests
-                var relatedRequests = serviceManager.GetRelatedRequests(searchId);
-                foreach (var relatedId in relatedRequests)
+                // Get and display related requests
+                var relatedIds = serviceManager.GetRelatedRequests(searchId);
+                var relatedRequests = new List<ServiceRequest>();
+
+                foreach (var relatedId in relatedIds)
                 {
                     var relatedRequest = serviceManager.FindRequestBST(relatedId);
                     if (relatedRequest != null)
-                        UpdateListView(relatedRequest);
+                    {
+                        relatedRequests.Add(relatedRequest);
+                    }
                 }
+                UpdateRelatedListView(relatedRequests);
             }
             else
             {

@@ -8,6 +8,7 @@ namespace MunicipalServicesApp
         private System.ComponentModel.IContainer components = null;
 
         private ListView listViewRequests;
+        private ListView listViewRelatedRequests;
         private TextBox txtSearchId;
         private Button btnSearch;
         private Button btnAddRequest;
@@ -19,6 +20,7 @@ namespace MunicipalServicesApp
         private Label labelSearchId;
         private Label labelSort;
         private Label labelRequestDetails;
+        private Label labelRelatedRequests;
 
         protected override void Dispose(bool disposing)
         {
@@ -34,7 +36,7 @@ namespace MunicipalServicesApp
             this.components = new System.ComponentModel.Container();
 
             this.Text = "Service Request Status";
-            this.Size = new Size(800, 600);
+            this.Size = new Size(850, 900);
             this.BackColor = Color.White;
 
             // Initialize Header Panel
@@ -65,6 +67,26 @@ namespace MunicipalServicesApp
             this.listViewRequests.BackColor = Color.WhiteSmoke;
             this.listViewRequests.Font = new Font("Segoe UI", 9F);
             this.listViewRequests.FullRowSelect = true;
+
+            // Initialize Label for related requests heading
+            this.labelRelatedRequests = new Label();
+            this.labelRelatedRequests.Text = "Related Service Requests";
+            this.labelRelatedRequests.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            this.labelRelatedRequests.Location = new Point(20, 320);
+            this.labelRelatedRequests.Size = new Size(200, 20);
+
+            // Initialize ListView for related requests
+            this.listViewRelatedRequests = new ListView();
+            this.listViewRelatedRequests.Location = new Point(20, 350);
+            this.listViewRelatedRequests.Size = new Size(740, 150);
+            this.listViewRelatedRequests.View = View.Details;
+            this.listViewRelatedRequests.Columns.Add("ID", 100);
+            this.listViewRelatedRequests.Columns.Add("Description", 200);
+            this.listViewRelatedRequests.Columns.Add("Status", 100);
+            this.listViewRelatedRequests.Columns.Add("Priority", 80);
+            this.listViewRelatedRequests.Columns.Add("Category", 100);
+            this.listViewRelatedRequests.Columns.Add("Created Date", 150);
+            this.listViewRelatedRequests.FullRowSelect = true;
 
             // Initialize Search Controls
             this.labelSearchId = new Label();
@@ -137,7 +159,9 @@ namespace MunicipalServicesApp
         this.btnViewDetails,
         this.btnBackToMenu,
         this.labelRequestDetails,
-        this.panelHeader
+        this.panelHeader,
+        this.labelRelatedRequests,
+        this.listViewRelatedRequests
     });
         }
     }
