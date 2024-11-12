@@ -28,7 +28,6 @@ namespace MunicipalServicesApp
             buttonSearch = new Button();
             textBoxEventDetails = new TextBox();
             listBoxRecommendations = new ListBox();
-            buttonCreateEvent = new Button();
             btnBackToMainMenu = new Button();
             panelHeader = new Panel();
             labelHeader = new Label();
@@ -103,31 +102,21 @@ namespace MunicipalServicesApp
             textBoxEventDetails.Multiline = true;
             textBoxEventDetails.Name = "textBoxEventDetails";
             textBoxEventDetails.ReadOnly = true;
-            textBoxEventDetails.Size = new Size(600, 100);
+            textBoxEventDetails.Size = new Size(600, 132);
             textBoxEventDetails.TabIndex = 5;
             // 
             // listBoxRecommendations
             // 
             listBoxRecommendations.FormattingEnabled = true;
             listBoxRecommendations.ItemHeight = 17;
-            listBoxRecommendations.Location = new Point(47, 657);
+            listBoxRecommendations.Location = new Point(47, 701);
             listBoxRecommendations.Name = "listBoxRecommendations";
             listBoxRecommendations.Size = new Size(600, 123);
             listBoxRecommendations.TabIndex = 6;
             // 
-            // buttonCreateEvent
-            // 
-            buttonCreateEvent.Location = new Point(173, 800);
-            buttonCreateEvent.Name = "buttonCreateEvent";
-            buttonCreateEvent.Size = new Size(150, 40);
-            buttonCreateEvent.TabIndex = 7;
-            buttonCreateEvent.Text = "Create Event";
-            buttonCreateEvent.UseVisualStyleBackColor = true;
-            buttonCreateEvent.Click += buttonCreateEvent_Click;
-            // 
             // btnBackToMainMenu
             // 
-            btnBackToMainMenu.Location = new Point(333, 800);
+            btnBackToMainMenu.Location = new Point(333, 844);
             btnBackToMainMenu.Name = "btnBackToMainMenu";
             btnBackToMainMenu.Size = new Size(150, 40);
             btnBackToMainMenu.TabIndex = 8;
@@ -142,7 +131,7 @@ namespace MunicipalServicesApp
             panelHeader.Dock = DockStyle.Top;
             panelHeader.Location = new Point(0, 0);
             panelHeader.Name = "panelHeader";
-            panelHeader.Size = new Size(800, 100);
+            panelHeader.Size = new Size(835, 100);
             panelHeader.TabIndex = 9;
             // 
             // labelHeader
@@ -170,16 +159,16 @@ namespace MunicipalServicesApp
             labelEventDetails.AutoSize = true;
             labelEventDetails.Location = new Point(47, 505);
             labelEventDetails.Name = "labelEventDetails";
-            labelEventDetails.Size = new Size(89, 19);
+            labelEventDetails.Size = new Size(91, 19);
             labelEventDetails.TabIndex = 11;
             labelEventDetails.Text = "Event Details:";
             // 
             // labelRecommendations
             // 
             labelRecommendations.AutoSize = true;
-            labelRecommendations.Location = new Point(47, 635);
+            labelRecommendations.Location = new Point(47, 679);
             labelRecommendations.Name = "labelRecommendations";
-            labelRecommendations.Size = new Size(124, 19);
+            labelRecommendations.Size = new Size(125, 19);
             labelRecommendations.TabIndex = 12;
             labelRecommendations.Text = "Recommendations:";
             // 
@@ -187,13 +176,12 @@ namespace MunicipalServicesApp
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 852);
+            ClientSize = new Size(835, 927);
             Controls.Add(labelRecommendations);
             Controls.Add(labelEventDetails);
             Controls.Add(labelEventName);
             Controls.Add(panelHeader);
             Controls.Add(btnBackToMainMenu);
-            Controls.Add(buttonCreateEvent);
             Controls.Add(listBoxRecommendations);
             Controls.Add(textBoxEventDetails);
             Controls.Add(buttonSearch);
@@ -221,7 +209,7 @@ namespace MunicipalServicesApp
         private Button buttonSearch;
         private TextBox textBoxEventDetails;
         private ListBox listBoxRecommendations;
-        private Button buttonCreateEvent;
+       // private Button buttonCreateEvent;
         private Button btnBackToMainMenu;
         private Panel panelHeader;
         private Label labelHeader;

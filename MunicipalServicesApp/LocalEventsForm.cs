@@ -35,6 +35,9 @@ namespace MunicipalServicesApp
             _manager.AddEvent(new Event("Community Cleanup", DateTime.Now.AddDays(7), "Environment", "Join us for a community-wide cleanup event!"));
             _manager.AddEvent(new Event("Local Art Exhibition", DateTime.Now.AddDays(14), "Culture", "Showcasing artwork from local artists."));
             _manager.AddEvent(new Event("Town Hall Meeting", DateTime.Now.AddDays(21), "Government", "Discussing upcoming city projects and initiatives."));
+            _manager.AddEvent(new Event("Youth Sports Festival", DateTime.Now.AddDays(10), "Sports", "A day filled with fun sports activities for all ages."));
+            _manager.AddEvent(new Event("Music in the Park", DateTime.Now.AddDays(30), "Entertainment", "Enjoy live performances by local bands."));
+         
         }
 
         // Applies custom styles to all controls on the form
@@ -45,7 +48,7 @@ namespace MunicipalServicesApp
 
             // Style individual controls like buttons, list views
             StyleButton(buttonSearch);
-            StyleButton(buttonCreateEvent);
+           // StyleButton(buttonCreateEvent);
             StyleButton(btnBackToMainMenu);
 
             StyleListView(listViewEvents);
@@ -127,9 +130,9 @@ namespace MunicipalServicesApp
 
             buttonSearch.Location = new Point((ClientSize.Width - buttonSearch.Width) / 2, searchControlsY + textBoxSearch.Height + 10);
 
-            int bottomButtonsY = ClientSize.Height - buttonCreateEvent.Height - 20;
-            buttonCreateEvent.Location = new Point(centerX, bottomButtonsY);
-            btnBackToMainMenu.Location = new Point(buttonCreateEvent.Right + 10, bottomButtonsY);
+          //  int bottomButtonsY = ClientSize.Height - buttonCreateEvent.Height - 20;
+          //  buttonCreateEvent.Location = new Point(centerX, bottomButtonsY);
+          //  btnBackToMainMenu.Location = new Point(buttonCreateEvent.Right + 10, bottomButtonsY);
         }
 
         // Populates the ListView with all events from the manager
@@ -290,18 +293,18 @@ namespace MunicipalServicesApp
         }
 
         // Opens the EventCreateForm to allow users to create a new event
-        private void buttonCreateEvent_Click(object sender, EventArgs e)
-        {
-            EventCreateForm createForm = new EventCreateForm(_manager);
-            createForm.FormClosed += (s, args) =>
-            {
-                this.Show();
-                PopulateEventList(); // Refreshes event list after new event creation
-                PopulateCategoryComboBox(); // Refreshes categories
-            };
-            createForm.Show();
-            this.Hide();
-        }
+        //private void buttonCreateEvent_Click(object sender, EventArgs e)
+        //{
+        //    EventCreateForm createForm = new EventCreateForm(_manager);
+        //    createForm.FormClosed += (s, args) =>
+        //    {
+        //        this.Show();
+        //        PopulateEventList(); // Refreshes event list after new event creation
+        //        PopulateCategoryComboBox(); // Refreshes categories
+        //    };
+        //    createForm.Show();
+        //    this.Hide();
+        //}
 
         private void btnBackToMainMenu_Click(object sender, EventArgs e)
         {
