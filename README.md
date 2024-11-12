@@ -105,8 +105,41 @@ The Local Events form allows users to manage and view local community events.
    - View recommended events based on your search history and selected categories.
 
 5. Create Event:
+   - Restricted to admins only.
    - Click the Create Event button to open a form for adding a new event.
    - Fill in the event details (name, date, category, description) and click Create.
+
+### Service Request Status
+The Service Request Status page allows users to track the status of their municipal service requests in real time. Here’s how it works:
+
+1. Viewing Service Requests:
+
+- Click Service Request Status on the main menu to open the page.
+- A well-organized list of service requests is displayed, including each request’s ID, category, status, and priority.
+
+2. Tracking Service Request Progress:
+
+- Service requests are assigned unique identifiers (IDs) to easily track individual requests.
+- Requests are sorted by priority using a heap structure, ensuring high-priority requests are easily accessible.
+- Users can view details of each request’s current status, allowing them to track progress updates.
+
+3. Filtering and Searching Requests:
+
+- Use search and filter options to find specific requests by status, priority, or category, providing a more streamlined experience.
+
+4. Inter-Request Relationships:
+
+- Related requests (e.g., tasks depending on one another) are displayed using a graph structure.
+- Dependencies between requests are visualized, allowing users to see how certain requests may impact others.
+5. Data Structure Implementation:
+
+- Binary Search Trees and AVL Trees organize service requests by priority and status, improving search efficiency.
+- Heaps prioritize urgent requests, while graphs represent relationships, enabling efficient navigation and a clear view of interrelated requests.
+- Minimum Spanning Tree (MST) organizes these relationships to show the most efficient paths between dependent requests.
+
+6. Real-Time Updates:
+
+- Requests update in real-time, and any changes in status or priority reflect immediately on this page, enhancing user experience.
 
 ### Additional Features
 
