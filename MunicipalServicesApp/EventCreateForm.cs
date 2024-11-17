@@ -165,7 +165,7 @@ namespace MunicipalServicesApp
         // Cancel button click event handler - closes the form without saving
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel; // Set dialog result to cancel
+            DialogResult = DialogResult.Cancel; // Sets dialog result to cancel
             Close();
         }
 

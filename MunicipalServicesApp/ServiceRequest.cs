@@ -8,48 +8,55 @@ using System.IO;
 
 namespace MunicipalServicesApp
 {
+    // Represents a service request with basic properties and implements IComparable for comparison
     public class ServiceRequest : IComparable<ServiceRequest>
     {
-        public string Id { get; set; }
-        public string Description { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public string Status { get; set; }
-        public int Priority { get; set; }
-        public string Category { get; set; }
-        public string Location { get; set; }
+        public string Id { get; set; }                  // Unique identifier for the request
+        public string Description { get; set; }         // Details of the service request
+        public DateTime CreatedDate { get; set; }       // When the request was created
+        public string Status { get; set; }              // Current status of the request
+        public int Priority { get; set; }               // Priority level (used for sorting)
+        public string Category { get; set; }            // Type/category of service request
+        public string Location { get; set; }            // Location where service is needed
 
+        // Implements comparison based on priority
         public int CompareTo(ServiceRequest other)
         {
             return this.Priority.CompareTo(other.Priority);
         }
     }
 
+    // Generic tree node class used for BST, AVL, and Red-Black trees
     public class TreeNode<T> where T : IComparable<T>
     {
-        public T Data { get; set; }
-        public TreeNode<T> Left { get; set; }
-        public TreeNode<T> Right { get; set; }
-        public int Height { get; set; }
-        public bool IsRed { get; set; }
+        public T Data { get; set; } // Node's data
+        public TreeNode<T> Left { get; set; } // Left child reference
+        public TreeNode<T> Right { get; set; } // Right child reference
+        public int Height { get; set; } // Height for AVL balancing
+        public bool IsRed { get; set; } // Color for Red-Black tree
 
+        // Constructor initializes a new node with data
         public TreeNode(T data)
         {
             Data = data;
             Height = 1;
-            IsRed = true;
+            IsRed = true; // New nodes are red by default
         }
     }
 
+    // Main service management class implementing various data structures
     public class ServiceManager
     {
-        private TreeNode<ServiceRequest> bstRoot;
-        private TreeNode<ServiceRequest> avlRoot;
-        private TreeNode<ServiceRequest> rbRoot;
-        private List<ServiceRequest> heap;
-        private Dictionary<string, List<string>> serviceGraph;
-        private Dictionary<string, List<(string, int)>> weightedGraph = new Dictionary<string, List<(string, int)>>();
-        private static int lastRequestId = 005;
+        // Tree roots for different implementations
+        private TreeNode<ServiceRequest> bstRoot; // Binary Search Tree root
+        private TreeNode<ServiceRequest> avlRoot; // AVL Tree root
+        private TreeNode<ServiceRequest> rbRoot; // Red-Black Tree root
+        private List<ServiceRequest> heap; // Min heap for priority queue
+        private Dictionary<string, List<string>> serviceGraph;  // Adjacency list for service relationships
+        private Dictionary<string, List<(string, int)>> weightedGraph = new Dictionary<string, List<(string, int)>>(); // Weighted graph for MST
+        private static int lastRequestId = 005; // Counter for generating unique IDs
 
+        // Constructor initializes data structures and sample data
         public ServiceManager()
         {
             heap = new List<ServiceRequest>();
@@ -62,16 +69,17 @@ namespace MunicipalServicesApp
             RunGraphOperations();
         }
 
-        // Method to generate a new unique ID
+        // Method Generates unique request IDs in sequence
         public static string GenerateNextRequestId()
         {
             lastRequestId++;
             return $"SR{lastRequestId:D3}";
         }
 
+        // Sets up initial graph connections for testing
         private void InitializeGraph()
         {
-            // Sample connections for MST and BFS testing
+            // Initialize sample weighted connections
             AddWeightedGraphConnection("SR001", "SR002", 4);
             AddWeightedGraphConnection("SR002", "SR003", 6);
             AddWeightedGraphConnection("SR003", "SR004", 5);
@@ -80,11 +88,13 @@ namespace MunicipalServicesApp
         }
 
         // BST Operations
+        // Inserts a new request into the Binary Search Tree
         public void InsertBST(ServiceRequest request)
         {
             bstRoot = InsertBSTRecursive(bstRoot, request);
         }
 
+        // Recursive helper for BST insertion
         private TreeNode<ServiceRequest> InsertBSTRecursive(TreeNode<ServiceRequest> node, ServiceRequest request)
         {
             if (node == null)
@@ -99,13 +109,16 @@ namespace MunicipalServicesApp
         }
 
         // AVL Tree Operations
+        // Inserts a new request into the AVL Tree
         public void InsertAVL(ServiceRequest request)
         {
             avlRoot = InsertAVLRecursive(avlRoot, request);
         }
 
+        // Recursive helper for AVL insertion with balancing
         private TreeNode<ServiceRequest> InsertAVLRecursive(TreeNode<ServiceRequest> node, ServiceRequest request)
         {
+            // Standard BST insertion
             if (node == null)
                 return new TreeNode<ServiceRequest>(request);
 
@@ -114,10 +127,12 @@ namespace MunicipalServicesApp
             else
                 node.Right = InsertAVLRecursive(node.Right, request);
 
+            // Update height and balance
             node.Height = 1 + Math.Max(GetHeight(node.Left), GetHeight(node.Right));
 
             int balance = GetBalance(node);
 
+            // Balance the tree if needed
             // Left Left Case
             if (balance > 1 && request.CompareTo(node.Left.Data) < 0)
                 return RightRotate(node);
@@ -143,6 +158,7 @@ namespace MunicipalServicesApp
             return node;
         }
 
+        // Helper methods for AVL operations
         private int GetHeight(TreeNode<ServiceRequest> node)
         {
             if (node == null)
@@ -157,6 +173,7 @@ namespace MunicipalServicesApp
             return GetHeight(node.Left) - GetHeight(node.Right);
         }
 
+        // Tree rotation methods for balancing
         private TreeNode<ServiceRequest> RightRotate(TreeNode<ServiceRequest> y)
         {
             TreeNode<ServiceRequest> x = y.Left;
@@ -185,13 +202,14 @@ namespace MunicipalServicesApp
             return y;
         }
 
-        // Red-Black Tree Operations
+        // Inserts a new request into the Red-Black Tree
         public void InsertRB(ServiceRequest request)
         {
             rbRoot = InsertRBRecursive(rbRoot, request);
             rbRoot.IsRed = false; // Root must be black
         }
 
+        // Recursive helper for RB Tree insertion
         private TreeNode<ServiceRequest> InsertRBRecursive(TreeNode<ServiceRequest> node, ServiceRequest request)
         {
             if (node == null)
@@ -213,6 +231,7 @@ namespace MunicipalServicesApp
             return node;
         }
 
+        // Helper methods for RB Tree operations
         private bool IsRed(TreeNode<ServiceRequest> node)
         {
             if (node == null)
@@ -220,6 +239,7 @@ namespace MunicipalServicesApp
             return node.IsRed;
         }
 
+        // RB Tree specific rotations
         private TreeNode<ServiceRequest> RotateLeft(TreeNode<ServiceRequest> node)
         {
             TreeNode<ServiceRequest> x = node.Right;
@@ -248,12 +268,14 @@ namespace MunicipalServicesApp
         }
 
         // Heap Operations
+        // Inserts a new request into the min heap
         public void InsertHeap(ServiceRequest request)
         {
             heap.Add(request);
             HeapifyUp(heap.Count - 1);
         }
 
+        // Maintains heap property after insertion
         private void HeapifyUp(int index)
         {
             while (index > 0)
@@ -270,6 +292,7 @@ namespace MunicipalServicesApp
         }
 
         // Graph Operations
+        // Adds an unweighted edge to the graph
         public void AddGraphConnection(string requestId, string relatedRequestId)
         {
             if (!serviceGraph.ContainsKey(requestId))
@@ -278,17 +301,20 @@ namespace MunicipalServicesApp
             serviceGraph[requestId].Add(relatedRequestId);
         }
 
+        // Retrieves related requests for a given request
         public List<string> GetRelatedRequests(string requestId)
         {
             return serviceGraph.ContainsKey(requestId) ? serviceGraph[requestId] : new List<string>();
         }
 
         // Find requests using different data structures
+        // Finds a request in the BST by ID
         public ServiceRequest FindRequestBST(string id)
         {
             return FindRequestBSTRecursive(bstRoot, id);
         }
 
+        // Recursive helper for BST search
         private ServiceRequest FindRequestBSTRecursive(TreeNode<ServiceRequest> node, string id)
         {
             if (node == null)
@@ -304,7 +330,7 @@ namespace MunicipalServicesApp
             return FindRequestBSTRecursive(node.Right, id);
         }
 
-        // Get all requests in order of priority
+        // Returns all requests in priority order
         public List<ServiceRequest> GetPrioritizedRequests()
         {
             List<ServiceRequest> result = new List<ServiceRequest>();
@@ -312,6 +338,7 @@ namespace MunicipalServicesApp
             return result;
         }
 
+        // Performs inorder traversal of the tree
         private void InorderTraversal(TreeNode<ServiceRequest> node, List<ServiceRequest> result)
         {
             if (node != null)
@@ -322,6 +349,7 @@ namespace MunicipalServicesApp
             }
         }
 
+        // Adds a weighted edge to the graph
         public void AddWeightedGraphConnection(string requestId, string relatedRequestId, int weight)
         {
             if (!weightedGraph.ContainsKey(requestId))
@@ -334,6 +362,7 @@ namespace MunicipalServicesApp
         }
 
         // Graph Traversal (BFS)
+        // Implements Breadth-First Search
         public List<string> BFS(string startId)
         {
             var visited = new HashSet<string>();
@@ -370,7 +399,7 @@ namespace MunicipalServicesApp
             var visited = new HashSet<string>();
             var priorityQueue = new SortedSet<(int weight, string from, string to)>();
 
-            // Start with an arbitrary node
+            // Starts with an arbitrary node
             string startNode = weightedGraph.Keys.First();
             visited.Add(startNode);
 
@@ -409,13 +438,13 @@ namespace MunicipalServicesApp
         // Graph Operations Runner Method
         public void RunGraphOperations()
         {
-            // Log BFS traversal result
-            string startNode = "SR001"; // Example start node
+            // Logs BFS traversal result
+            string startNode = "SR001"; // Starting node for traversal
             var bfsResult = BFS(startNode);
             LogToFile("BFS Traversal from " + startNode + ":");
             bfsResult.ForEach(id => LogToFile(id));
 
-            LogToFile(""); // Add a blank line for readability
+            LogToFile(""); 
 
             // Log Minimum Spanning Tree result
             var mstResult = GetMinimumSpanningTree();
